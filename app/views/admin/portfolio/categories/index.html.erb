@@ -1,0 +1,48 @@
+<legend class="uk-legend">
+  <%= t('.title', default: 'Categories list')%>
+  <%= render 'layouts/admin/form/search' %>
+  <div class="uk-align-right">
+    <%= link_to t(:new), new_portfolio_category_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</legend>
+
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+  <thead>
+  <tr>
+    <th class="uk-width-small"><%= t('simple_form.labels.portfolio_category.api_key', default: 'Site')%></th>
+    <th class="uk-table-expand"><%= t('simple_form.labels.portfolio_category.title', default: 'Title')%></th>
+    <th><%= t('simple_form.labels.portfolio_category.slug', default: 'URL')%></th>
+    <th class="uk-table-auto"><%= t('simple_form.labels.portfolio_category.image', default: 'Image')%></th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @portfolio_categories.each do |portfolio_category| %>
+  <tr>
+    <td><%= portfolio_category.client.site %></td>
+    <td><%= portfolio_category.title %></td>
+    <td><%= link_to portfolio_category.slug, portfolio_category %></td>
+    <td><%= image_tag(portfolio_category.image_url, style: 'height: 40px') if portfolio_category.image.present? %></td>
+    <td class="uk-table-shrink"><%= link_to t(:edit), edit_portfolio_category_path(portfolio_category) %></td>
+    <td class="uk-table-shrink"><%= link_to t(:destroy), portfolio_category, method: :delete, data: { confirm: t(:confirm) } %></td>
+  </tr>
+  <% portfolio_category.subcategories.each do |portfolio_subcategory| %>
+      <tr>
+        <td></td>
+        <td>--- <%= portfolio_subcategory.title %></td>
+        <td><%= link_to portfolio_subcategory.slug, portfolio_subcategory %></td>
+        <td><%= image_tag(portfolio_subcategory.image_url, style: 'height: 40px') if portfolio_subcategory.image.present? %></td>
+        <td class="uk-table-shrink"><%= link_to t(:edit), edit_portfolio_category_path(portfolio_subcategory) %></td>
+        <td class="uk-table-shrink"><%= link_to t(:destroy), portfolio_subcategory, method: :delete, data: { confirm: t(:confirm) } %></td>
+      </tr>
+  <% end %>
+  <% end %>
+  <% if @portfolio_categories.empty? %>
+  <tr>
+    <td colspan="6"><h3 class="uk-text-muted uk-text-center"><%= t('.no_found', default: :no_found)%></h3></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @portfolio_categories, views_prefix: 'layouts/admin' %>

@@ -1,0 +1,23 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+
+    <article class="uk-article">
+
+      <h1 class="uk-article-title"><%= @portfolio_article.title %></h1>
+
+      <p class="uk-article-meta">
+        <%=t(:written_by)%> <%= @portfolio_article.client.user.to_label %> <%=t(:on)%> <%=date(@portfolio_article.published_at)%>.
+      </p>
+      <p class="uk-article-meta">
+        <%= @portfolio_article.tags %>
+      </p>
+
+      <p><%= @portfolio_article.content %></p>
+    </article>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_portfolio_article_path(@portfolio_article), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), portfolio_articles_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>
+

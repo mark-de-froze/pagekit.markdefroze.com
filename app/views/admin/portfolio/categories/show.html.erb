@@ -1,0 +1,22 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <dl class="uk-description-list uk-description-list-divider">
+      <dt><%= t('simple_form.labels.portfolio_category.api_key', default: 'Client')%></dt>
+      <dd><%= @portfolio_category.client.site %></dd>
+      <dt><%= t('simple_form.labels.portfolio_category.title', default: 'Title')%></dt>
+      <dd><%= @portfolio_category.title %></dd>
+      <dt><%= t('simple_form.labels.portfolio_category.slug', default: 'URL')%></dt>
+      <dd><%= @portfolio_category.slug %></dd>
+      <dt><%= t('simple_form.labels.portfolio_category.content', default: 'Content')%></dt>
+      <dd><%= @portfolio_category.content %></dd>
+      <dt><%= t('simple_form.labels.portfolio_category.parent', default: 'Parent')%></dt>
+      <dd><%= @portfolio_category.parent %></dd>
+      <dt><%= t('simple_form.labels.portfolio_category.image', default: 'Image')%></dt>
+      <dd><%= image_tag(@portfolio_category.image_url, style: 'height: 40px') if @portfolio_category.image.present? %></dd>
+    </dl>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_portfolio_category_path(@portfolio_category), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), portfolio_categories_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

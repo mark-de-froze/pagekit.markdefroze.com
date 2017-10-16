@@ -1,0 +1,18 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <dl class="uk-description-list uk-description-list-divider">
+      <dt><%= t('simple_form.labels.site_setting.api_key', default: 'Client')%></dt>
+      <dd><%= @site_setting.client.to_label %></dd>
+      <dt><%= t('simple_form.labels.site_setting.key', default: 'Key')%></dt>
+      <dd><%= @site_setting.key %></dd>
+      <dt><%= t('simple_form.labels.site_setting.value', default: 'Value')%></dt>
+      <dd><%= @site_setting.value %></dd>
+      <dt><%= t('simple_form.labels.site_setting.section', default: 'Section')%></dt>
+      <dd><%= @site_setting.section %></dd>
+    </dl>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_site_setting_path(@site_setting), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), site_settings_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

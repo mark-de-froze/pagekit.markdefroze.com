@@ -1,0 +1,20 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+
+    <article class="uk-article">
+
+      <h1 class="uk-article-title"><%= @site_page.title %> <small><%= @site_page.metatitle %></small></h1>
+
+      <p class="uk-article-meta">
+        <%=t(:written_by)%> <%= @site_page.client.user.to_label %> <%=t(:on)%> <%=date(@site_page.created_at)%>.
+      </p>
+
+      <p class="uk-text-lead"><%= @site_page.metadescription %></p>
+      <p><%= @site_page.content %></p>
+    </article>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_site_page_path(@site_page), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), site_pages_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

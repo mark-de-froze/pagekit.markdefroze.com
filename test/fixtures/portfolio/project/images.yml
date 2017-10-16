@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  portfolio_project: one
+  image: MyString
+
+two:
+  portfolio_project: two
+  image: MyString

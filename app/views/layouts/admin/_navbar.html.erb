@@ -1,0 +1,43 @@
+<header id="header">
+  <div class="uk-section-primary uk-preserve-color">
+    <div class="uk-container uk-light uk-container-center">
+      <nav class="uk-navbar">
+        <div class="uk-navbar-left">
+          <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
+          <a href="#" class="uk-navbar-item uk-logo"><%= @title_section%></a>
+        </div>
+        <div uk-dropdown="mode: click">
+          <ul class="uk-grid uk-grid-small uk-width-medium uk-child-width-1-3@m uk-margin-remove-left">
+          <% @menu_main.each do |url, item| %>
+            <% if (current_user.has_role? item[:role]) || (current_user.has_role? :administrator) %>
+              <li>
+                <a href="/<%=url_for(url)%>" class="uk-text-center uk-display-block uk-link-reset">
+                  <%=image_tag(item[:icon], size: 50, alt: item[:title])%>
+                  <p class="uk-margin-small"><%=item[:title]%></p>
+                </a>
+              </li>
+            <% end %>
+          <% end %>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <ul class="uk-grid uk-grid-small uk-flex-middle uk-iconnav">
+            <li>
+              <%= link_to '', destroy_user_session_path, method: :delete, 'uk-icon': 'sign-out' %>
+            </li>
+            <li><a uk-icon="icon: question" href="/" target="_blank" title="Get Help"></a></li>
+            <li><a uk-icon="icon: home" target="_blank" href="/" title="Visit Site"></a></li>
+            <li class="uk-margin-small-left"><a href="/" title="Profile"><span><%=current_user.email%></span></a></li>
+          </ul>
+        </div>
+      </nav>
+      <ul class="uk-navbar-nav uk-navbar-tabs">
+      <% @menu_sub.each do |url, item| %>
+        <li class="<%= request.path.include?(url) || url.include?(@controller) ? 'uk-active':nil%>">
+          <a href="<%=url_for(url)%>"><%=item[:title]%></a>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</header>

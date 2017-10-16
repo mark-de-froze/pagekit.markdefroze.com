@@ -1,0 +1,7 @@
+<% content_for :links do %>
+    <%= link_to t(:back), site_widgets_path, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:show), @site_widget, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:destroy), @site_widget, method: :delete, class: 'uk-button uk-button-danger', data: { confirm: t(:confirm) } %>
+<% end %>
+
+<%= render 'form', site_widget: @site_widget %>

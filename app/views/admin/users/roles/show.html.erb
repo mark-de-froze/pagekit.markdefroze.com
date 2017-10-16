@@ -1,0 +1,12 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <dl class="uk-description-list uk-description-list-divider">
+      <dt><%= t('simple_form.labels.users_role.name', default: 'Name')%></dt>
+      <dd><%= @users_role.name %></dd>
+    </dl>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_users_role_path(@users_role), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), users_roles_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

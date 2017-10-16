@@ -1,0 +1,45 @@
+<legend class="uk-legend">
+  <%= t('.title', default: 'Keys list')%>
+  <%= render 'layouts/admin/form/search' %>
+  <div class="uk-align-right">
+    <%= link_to t(:new), new_users_key_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</legend>
+
+<div class="uk-width-1-1 uk-grid-match uk-child-width-1-3" uk-grid>
+  <% @users_keys.each do |users_key| %>
+  <div>
+
+    <div class="uk-card uk-card-default">
+      <div class="uk-inline">
+        <div class="uk-card-media-top">
+          <div class="uk-cover-container">
+            <a class="uk-link-reset" href="<%=users_key_path(users_key)%>">
+              <%=image_tag(users_key.image_url)%>
+            </a>
+          </div>
+          <div class="uk-position-top-right uk-padding-small uk-position-small uk-overlay-hover uk-overlay-primary uk-text-center">
+            <%= link_to content_tag(:span, nil, 'uk-icon': :'icon: pencil', title: t(:edit)),
+                        edit_users_key_path(users_key) %>
+            <%= link_to content_tag(:span, nil, 'uk-icon': :'icon: trash', title: t(:destroy)),
+                        users_key, method: :delete, data: { confirm: t(:confirm) } %>
+          </div>
+        </div>
+      </div>
+      <div class="uk-card-body">
+        <h3 class="uk-card-title"><%= users_key.site %></h3>
+        <p><%= users_key.user.to_label %></p>
+        <p><%= t('simple_form.labels.users_key.api_key', default: 'Api key')%>: <%= users_key.api_key %></p>
+      </div>
+
+    </div>
+
+  </div>
+  <% end %>
+</div>
+
+<% if @users_keys.empty? %>
+<h3 class="uk-text-muted uk-text-center"><%= t('.no_found', default: :no_found)%></h3>
+<% end %>
+
+<%= paginate @users_keys, views_prefix: 'layouts/admin' %>

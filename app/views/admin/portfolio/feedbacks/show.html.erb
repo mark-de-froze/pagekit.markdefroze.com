@@ -1,0 +1,22 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <dl class="uk-description-list uk-description-list-divider">
+      <dt><%= t('simple_form.labels.portfolio_feedback.api_key', default: 'Client')%></dt>
+      <dd><%= @portfolio_feedback.client.to_label %></dd>
+      <dt><%= t('simple_form.labels.portfolio_feedback.portfolio_project', default: 'Project')%></dt>
+      <dd><%= @portfolio_feedback.project.to_label %></dd>
+      <dt><%= t('simple_form.labels.portfolio_feedback.title', default: 'Title')%></dt>
+      <dd><%= @portfolio_feedback.title %></dd>
+      <dt><%= t('simple_form.labels.portfolio_feedback.content', default: 'Content')%></dt>
+      <dd><%= @portfolio_feedback.content %></dd>
+      <dt><%= t('simple_form.labels.portfolio_feedback.status', default: 'Status')%></dt>
+      <dd><%= @portfolio_feedback.status_text %></dd>
+      <dt><%= t('simple_form.labels.portfolio_feedback.published_at', default: 'Published at')%></dt>
+      <dd><%= @portfolio_feedback.published_at %></dd>
+    </dl>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_portfolio_feedback_path(@portfolio_feedback), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), portfolio_feedbacks_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

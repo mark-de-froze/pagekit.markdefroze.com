@@ -1,0 +1,22 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <dl class="uk-description-list uk-description-list-divider">
+      <dt><%= t('simple_form.labels.users_key.api_key', default: 'Api key')%></dt>
+      <dd><%= @users_key.api_key %></dd>
+      <dt><%= t('simple_form.labels.users_key.user', default: 'User')%></dt>
+      <dd><%= @users_key.user.to_label %></dd>
+      <dt><%= t('simple_form.labels.users_key.site', default: 'Site')%></dt>
+      <dd><%= @users_key.site %></dd>
+      <dt><%= t('simple_form.labels.users_key.title', default: 'Title')%></dt>
+      <dd><%= @users_key.title %></dd>
+      <dt><%= t('simple_form.labels.users_key.image', default: 'Image')%></dt>
+      <dd><%= image_tag(@users_key.image_url, width: 250) if @users_key.image %></dd>
+      <dt><%= t('simple_form.labels.users_key.content', default: 'Content')%></dt>
+      <dd><%= @users_key.content %></dd>
+    </dl>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_users_key_path(@users_key), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), users_keys_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

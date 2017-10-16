@@ -1,0 +1,12 @@
+<% content_for :links do %>
+    <%= link_to t(:back), portfolio_projects_path, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:show), @portfolio_project, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:destroy), @portfolio_project, method: :delete, class: 'uk-button uk-button-danger', data: { confirm: t(:confirm) } %>
+
+    <%= link_to t(:add_image), new_portfolio_image_path(portfolio_image: {
+        portfolio_project_id: @portfolio_project.id,
+        api_key: @portfolio_project.api_key,
+    }), class: 'uk-button uk-button-primary' %>
+<% end %>
+
+<%= render 'form', portfolio_project: @portfolio_project %>

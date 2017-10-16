@@ -1,0 +1,27 @@
+<%= simple_form_for @portfolio_article, html: {class: 'uk-form-stacked'}, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.title', default: action_name.titleize + ' Article')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <div class="uk-width-1-1" uk-grid>
+    <div class="uk-width-3-4">
+      <%= f.input :title %>
+      <%= f.input :content %>
+      <%= f.input :published_at %>
+    </div>
+    <div class="uk-width-1-4">
+      <%= f.input :slug if @portfolio_article.slug.present? %>
+      <%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}  %>
+      <%= f.input :status, collection: @portfolio_article.statuses, prompt: :translate, input_html: {class: 'uk-select'} %>
+      <%= f.input :tags %>
+    </div>
+  </div>
+
+
+<% end %>
+

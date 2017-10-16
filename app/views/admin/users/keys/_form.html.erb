@@ -1,0 +1,31 @@
+<%= render 'layouts/admin/form/uploader' %>
+
+<%= simple_form_for @users_key, html: {class: 'uk-form-stacked'}, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.title', default: action_name.titleize + ' Key')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <div class="uk-width-1-1 uk-child-width-expand" uk-grid>
+    <div>
+      <%= f.input :api_key %>
+    </div>
+    <div>
+      <%= f.input :site %>
+    </div>
+    <div>
+      <%= f.association :user, prompt: :translate %>
+    </div>
+  </div>
+
+  <%= f.input :title %>
+
+  <%= f.input :image, as: :image_preview %>
+
+  <%= f.input :content %>
+
+<% end %>

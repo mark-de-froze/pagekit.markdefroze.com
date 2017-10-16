@@ -1,0 +1,6 @@
+<% content_for :links do %>
+    <%= link_to t(:back), users_keys_path, class: 'uk-button uk-button-default' %>
+<% end %>
+
+<%= render 'form', users_key: @users_key %>
+

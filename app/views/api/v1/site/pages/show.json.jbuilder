@@ -1,0 +1,1 @@
+json.partial! 'api/v1/site/pages/page', page: @page

@@ -1,0 +1,34 @@
+<legend class="uk-legend">
+  <%%= t('.title', default: '<%= plural_table_name.split('_').last.titleize %> list')%>
+  <div class="uk-align-right">
+    <%%= link_to t(:new), new_<%= singular_table_name %>_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</legend>
+
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+  <thead>
+  <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+    <th><%%= t('simple_form.labels.<%= singular_table_name %>.<%= attribute.name %>', default: '<%=attribute.human_name%>')%></th>
+<% end -%>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+  <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+    <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+<% end -%>
+    <td class="uk-table-shrink"><%%= link_to t(:show), <%= singular_table_name %> %></td>
+    <td class="uk-table-shrink"><%%= link_to t(:edit), edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
+    <td class="uk-table-shrink"><%%= link_to t(:destroy), <%= singular_table_name %>, method: :delete, data: { confirm: t(:confirm) } %></td>
+  </tr>
+  <%% end %>
+  <%% if @<%= plural_table_name %>.empty? %>
+  <tr>
+    <td colspan="<%=attributes.count.to_i + 3%>"><h3 class="uk-text-muted uk-text-center"><%%= t('.no_found', default: :no_found)%></h3></td>
+  </tr>
+  <%% end %>
+  </tbody>
+</table>

@@ -1,0 +1,1 @@
+json.extract! link, :id, :title, :url, :section, :status, :is_visible_main, :is_visible_offcanvas, :created_at, :updated_at

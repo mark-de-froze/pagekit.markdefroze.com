@@ -1,0 +1,48 @@
+<legend class="uk-legend">
+  <%= t('.title', default: 'Projects list')%>
+  <%= render 'layouts/admin/form/search' %>
+  <div class="uk-align-right">
+    <%= link_to t(:new), new_portfolio_project_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</legend>
+
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+  <thead>
+  <tr>
+    <th class="uk-width-small"><%= t('simple_form.labels.portfolio_project.api_key', default: 'Client')%></th>
+    <th class="uk-table-expand">
+      <%= t('simple_form.labels.portfolio_project.title', default: 'Title')%>/
+      <%= t('simple_form.labels.portfolio_project.subtitle', default: 'Subtitle')%>
+    </th>
+    <th><%= t('simple_form.labels.portfolio_project.slug', default: 'URL')%></th>
+    <th><%= t('simple_form.labels.portfolio_project.status', default: 'Status')%></th>
+    <th><%= t('simple_form.labels.portfolio_project.portfolio_category', default: 'Category')%></th>
+    <th><%= t('simple_form.labels.portfolio_project.published_at', default: 'Published at')%></th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @portfolio_projects.each do |portfolio_project| %>
+  <tr>
+    <td><%= portfolio_project.client.site %></td>
+    <td>
+      <%= portfolio_project.title %> <br>
+      <%= portfolio_project.subtitle %>
+    </td>
+    <td><%= link_to portfolio_project.slug, portfolio_project %></td>
+    <td class="uk-text-center"><span title="<%= portfolio_project.status_text %>" class="uk-icon-circle-<%= portfolio_project.status %>"></span></td>
+    <td><%= link_to portfolio_project.category.to_label, portfolio_project.category %></td>
+    <td><%= time_ago_in_words(portfolio_project.published_at) %> <%=t(:ago, default: 'ago')%></td>
+    <td class="uk-table-shrink"><%= link_to t(:edit), edit_portfolio_project_path(portfolio_project) %></td>
+    <td class="uk-table-shrink"><%= link_to t(:destroy), portfolio_project, method: :delete, data: { confirm: t(:confirm) } %></td>
+  </tr>
+  <% end %>
+  <% if @portfolio_projects.empty? %>
+  <tr>
+    <td colspan="9"><h3 class="uk-text-muted uk-text-center"><%= t('.no_found', default: :no_found)%></h3></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @portfolio_projects, views_prefix: 'layouts/admin' %>

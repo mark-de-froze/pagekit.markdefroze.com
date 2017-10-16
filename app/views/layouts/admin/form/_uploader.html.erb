@@ -1,0 +1,10 @@
+<% if @uploader %>
+    <div class="uk-float-right uk-margin-small-left">
+      <%= direct_upload_form_for @uploader do |f| %>
+          <div class="upload" uk-form-custom>
+            <%= f.file_field :name %>
+            <%= f.button t(:upload), class: 'uk-button uk-button-primary' %>
+          </div>
+      <% end %>
+    </div>
+<% end %>

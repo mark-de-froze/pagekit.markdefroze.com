@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  api_key: MyString
+  key: MyString
+  size: 1
+  modified: 
+
+two:
+  api_key: MyString
+  key: MyString
+  size: 1
+  modified: 

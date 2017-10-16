@@ -1,0 +1,7 @@
+<% content_for :links do %>
+    <%= link_to t(:back), site_mails_path, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:show), @site_mail, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:destroy), @site_mail, method: :delete, class: 'uk-button uk-button-danger', data: { confirm: t(:confirm) } %>
+<% end %>
+
+<%= render 'form', site_mail: @site_mail %>

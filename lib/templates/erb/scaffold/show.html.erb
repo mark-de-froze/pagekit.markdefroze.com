@@ -1,0 +1,14 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <dl class="uk-description-list uk-description-list-divider">
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+      <dt><%%= t('simple_form.labels.<%= singular_table_name %>.<%= attribute.name %>', default: '<%=attribute.human_name%>')%></dt>
+      <dd><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
+<% end -%>
+    </dl>
+  </div>
+  <div class="uk-card-footer">
+    <%%= link_to t(:edit), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'uk-button uk-button-text' %> |
+    <%%= link_to t(:back), <%= index_helper %>_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

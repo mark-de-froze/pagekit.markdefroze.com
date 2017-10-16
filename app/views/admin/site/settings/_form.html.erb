@@ -1,0 +1,17 @@
+<%= simple_form_for @site_setting, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.title', default: action_name.titleize + ' Setting')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}   %>
+
+  <%= f.input :key %>
+  <%= f.input :value, input_html: {style: 'height: 40px;'} %>
+  <%= f.input :section, as: :radio_buttons, collection: @site_setting.sections, prompt: :translate %>
+<% end %>
+

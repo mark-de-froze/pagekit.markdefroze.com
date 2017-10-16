@@ -1,0 +1,52 @@
+<div class="uk-width-1-1" uk-grid>
+  <div class="uk-width-medium">
+    <ul class="uk-nav uk-nav-default uk-nav-side">
+      <li><%= link_to t(:all), site_widgets_path %></li>
+      <li class="uk-nav-header"><%=t(:positions)%></li>
+      <% @site_widgets_positions.each do |position, count|%>
+      <li><%= link_to "#{position} <span class=\"uk-text-muted uk-float-right\">#{count}</span>".html_safe, site_widgets_path(position: position) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="uk-width-expand">
+
+    <legend class="uk-legend">
+      <%= t('.title', default: 'Widgets list')%>
+      <%= render 'layouts/admin/form/search' %>
+      <div class="uk-align-right">
+        <%= link_to t(:new), new_site_widget_path, class: 'uk-button uk-button-primary' %>
+      </div>
+    </legend>
+
+    <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+      <thead>
+      <tr>
+        <th class="uk-width-small"><%= t('simple_form.labels.site_widget.api_key', default: 'Client')%></th>
+        <th><%= t('simple_form.labels.site_widget.title', default: 'Title')%></th>
+        <th class="uk-table-shrink"><%= t('simple_form.labels.site_widget.status', default: 'Status')%></th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @site_widgets.each do |site_widget| %>
+          <tr>
+            <td><%= site_widget.client.site %></td>
+            <td><%= site_widget.title %></td>
+            <td class="uk-text-center"><span title="<%= site_widget.status_text %>" class="uk-icon-circle-<%= site_widget.status %>"></span></td>
+            <td class="uk-table-shrink"><%= link_to t(:show), site_widget %></td>
+            <td class="uk-table-shrink"><%= link_to t(:edit), edit_site_widget_path(site_widget) %></td>
+            <td class="uk-table-shrink"><%= link_to t(:destroy), site_widget, method: :delete, data: { confirm: t(:confirm) } %></td>
+          </tr>
+      <% end %>
+      <% if @site_widgets.empty? %>
+          <tr>
+            <td colspan="6"><h3 class="uk-text-muted uk-text-center"><%= t('.no_found', default: :no_found)%></h3></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= paginate @site_widgets, views_prefix: 'layouts/admin' %>
+  </div>
+</div>
+

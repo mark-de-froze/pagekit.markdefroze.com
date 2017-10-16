@@ -1,0 +1,45 @@
+<legend class="uk-legend">
+  <%= t('.title', default: 'Links list')%>
+  <%= render 'layouts/admin/form/search' %>
+  <div class="uk-align-right">
+    <%= link_to t(:new), new_site_link_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</legend>
+
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+  <thead>
+  <tr>
+    <th class="uk-width-small"><%= t('simple_form.labels.site_link.api_key', default: 'Client')%></th>
+    <th class="uk-table-expand"><%= t('simple_form.labels.site_link.title', default: 'Title')%></th>
+    <th><%= t('simple_form.labels.site_link.url', default: 'Url')%></th>
+    <th><%= t('simple_form.labels.site_link.section', default: 'Section')%></th>
+    <th class="uk-table-auto"><%= t('simple_form.labels.site_link.status', default: 'Status')%></th>
+    <th class="uk-table-auto"><%= t('simple_form.labels.site_link.is_visible_main', default: 'Is visible main')%></th>
+    <th class="uk-table-auto"><%= t('simple_form.labels.site_link.is_visible_offcanvas', default: 'IS visible offcanvas')%></th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @site_links.each do |site_link| %>
+  <tr>
+    <td><%= site_link.client.site %></td>
+    <td><%= site_link.title %></td>
+    <td><%= site_link.url %></td>
+    <td><%= site_link.section %></td>
+    <td class="uk-text-center"><span title="<%= site_link.status_text %>" class="uk-icon-circle-<%= site_link.status %>"></span></td>
+    <td class="uk-text-center"><span class="uk-icon-circle-<%= site_link.is_visible_main %>"></span></td>
+    <td class="uk-text-center"><span class="uk-icon-circle-<%= site_link.is_visible_offcanvas %>"></span></td>
+    <td class="uk-table-shrink"><%= link_to t(:show), site_link %></td>
+    <td class="uk-table-shrink"><%= link_to t(:edit), edit_site_link_path(site_link) %></td>
+    <td class="uk-table-shrink"><%= link_to t(:destroy), site_link, method: :delete, data: { confirm: t(:confirm) } %></td>
+  </tr>
+  <% end %>
+  <% if @site_links.empty? %>
+  <tr>
+    <td colspan="10"><h3 class="uk-text-muted uk-text-center"><%= t('.no_found', default: :no_found)%></h3></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @site_links, views_prefix: 'layouts/admin' %>

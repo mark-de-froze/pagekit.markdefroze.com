@@ -1,0 +1,2 @@
+module Site::LinksHelper
+end

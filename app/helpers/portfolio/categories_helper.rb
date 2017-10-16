@@ -1,0 +1,2 @@
+module Portfolio::CategoriesHelper
+end

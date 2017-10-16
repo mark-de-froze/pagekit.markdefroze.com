@@ -1,0 +1,15 @@
+<%= simple_form_for @users_role, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.title', default: action_name.titleize + ' Role')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <%= f.input :name %>
+  <%= f.input :resource_id, collection: @users_role.resource_type.classify.constantize.all  if @users_role.resource_type.present? %>
+  <%= f.input :resource_type, collection: Rolify.resource_types.uniq %>
+<% end %>
+

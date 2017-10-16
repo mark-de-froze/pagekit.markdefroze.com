@@ -1,0 +1,25 @@
+<%= simple_form_for @users_account, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.title', default: action_name.titleize + ' Account')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <%= f.input :email %>
+  <%= f.input :password, autocomplete: "off" %>
+  <%= f.input :password_confirmation %>
+
+  <div>
+    <%= f.label :roles %>
+    <div class="uk-form-controls">
+      <div class="uk-grid">
+        <%= f.collection_check_boxes :role_ids, Role.all, :id, :to_label, :item_wrapper_class => 'uk-width-1-6' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+

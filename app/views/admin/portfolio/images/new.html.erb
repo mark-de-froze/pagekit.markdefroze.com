@@ -1,0 +1,6 @@
+<% content_for :links do %>
+    <%= link_to t(:back), portfolio_images_path, class: 'uk-button uk-button-default' %>
+<% end %>
+
+<%= render 'form', portfolio_image: @portfolio_image %>
+

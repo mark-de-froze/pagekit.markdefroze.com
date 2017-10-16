@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title %></title>
+
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.28/css/uikit.min.css' %>
+  <%= stylesheet_link_tag    'admin/application', media: 'all' %>
+
+  <%= javascript_include_tag 'admin/application' %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.28/js/uikit.min.js' %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.28/js/uikit-icons.min.js' %>
+</head>
+
+<body>
+<style>
+  .input label {
+    display: none;
+  }
+  .input {
+    margin: 40px;
+  }
+</style>
+<div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-text-center">
+  <div class="uk-width-medium">
+    <%= yield %>
+  </div>
+</div>
+</body>
+</html>

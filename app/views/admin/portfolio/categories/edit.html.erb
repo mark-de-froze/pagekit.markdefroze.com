@@ -1,0 +1,7 @@
+<% content_for :links do %>
+    <%= link_to t(:back), portfolio_categories_path, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:show), @portfolio_category, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:destroy), @portfolio_category, method: :delete, class: 'uk-button uk-button-danger', data: { confirm: t(:confirm) } %>
+<% end %>
+
+<%= render 'form', portfolio_category: @portfolio_category %>

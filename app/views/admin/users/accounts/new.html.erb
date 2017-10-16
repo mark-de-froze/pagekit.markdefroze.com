@@ -1,0 +1,6 @@
+<% content_for :links do %>
+    <%= link_to t(:back), users_accounts_path, class: 'uk-button uk-button-default' %>
+<% end %>
+
+<%= render 'form', users_account: @users_account %>
+

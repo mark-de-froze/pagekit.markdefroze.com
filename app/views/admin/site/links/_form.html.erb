@@ -1,0 +1,25 @@
+<%= simple_form_for @site_link, html: {class: 'uk-form-stacked'}, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.title', default: action_name.titleize + ' Link')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <div class="uk-width-1-1" uk-grid>
+    <div class="uk-width-3-4">
+      <%= f.input :title %>
+      <%= f.input :url %>
+      <%= f.input :section %>
+    </div>
+    <div class="uk-width-1-4">
+      <%= f.input :status, collection: @site_link.statuses, prompt: :translate, input_html: {class: 'uk-select'} %>
+      <%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}  %>
+      <%= f.input :is_visible_main, as: :boolean %>
+      <%= f.input :is_visible_offcanvas, as: :boolean %>
+    </div>
+  </div>
+<% end %>
+

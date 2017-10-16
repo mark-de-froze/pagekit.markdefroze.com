@@ -1,0 +1,7 @@
+<% content_for :links do %>
+    <%= link_to t(:back), users_accounts_path, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:show), @users_account, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:destroy), @users_account, method: :delete, class: 'uk-button uk-button-danger', data: { confirm: t(:confirm) } %>
+<% end %>
+
+<%= render 'form', users_account: @users_account %>

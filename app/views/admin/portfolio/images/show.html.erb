@@ -1,0 +1,20 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <dl class="uk-description-list uk-description-list-divider">
+      <dt><%= t('simple_form.labels.portfolio_image.portfolio_project', default: 'Project')%></dt>
+      <dd><%= @portfolio_image.project.to_label %></dd>
+      <dt><%= t('simple_form.labels.portfolio_image.image', default: 'Image')%></dt>
+      <dd><%= image_tag(@portfolio_image.image_url) %></dd>
+
+      <dt><%= t('simple_form.labels.portfolio_image.title', default: 'Title')%></dt>
+      <dd><%= @portfolio_image.title %></dd>
+
+      <dt><%= t('simple_form.labels.portfolio_image.content', default: 'Content')%></dt>
+      <dd><%= @portfolio_image.content %></dd>
+    </dl>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_portfolio_image_path(@portfolio_image), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), portfolio_images_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

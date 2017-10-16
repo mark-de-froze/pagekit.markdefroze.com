@@ -1,0 +1,84 @@
+<%= render 'layouts/admin/form/uploader' %>
+<%= simple_form_for @portfolio_project, html: {class: 'uk-form-stacked'}, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.title', default: action_name.titleize + ' Project')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <div>
+    <ul class="uk-width-1-1" uk-tab>
+      <li><a href="#"><%=t(:content)%></a></li>
+      <li><a href="#"><%=t(:meta)%></a></li>
+      <% if @portfolio_project.id.present? %>
+      <li><a href="#"><%=t(:images)%></a></li>
+      <% end %>
+    </ul>
+    <ul class="uk-switcher uk-margin">
+      <li>
+        <div uk-grid>
+          <div class="uk-width-3-4">
+            <%= f.input :title %>
+            <%= f.input :subtitle %>
+            <%= f.input :content %>
+            <%= f.input :published_at %>
+          </div>
+          <div class="uk-width-1-4">
+            <%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}  %>
+            <%= f.input :slug if @portfolio_project.slug.present? %>
+            <%= f.association :category, prompt: :translate %>
+            <%= f.input :status, collection: @portfolio_project.statuses, prompt: :translate, input_html: {class: 'uk-select'} %>
+            <%= f.input :priority, collection: @portfolio_project.priorities, prompt: :translate, input_html: {class: 'uk-select'} %>
+            <%= f.input :customer %>
+          </div>
+        </div>
+      </li>
+      <li>
+        <%= f.input :metatitle %>
+        <%= f.input :metakeywords %>
+        <%= f.input :metadescription %>
+      </li>
+      <% if @portfolio_project.id.present? %>
+      <li>
+
+        <div uk-grid>
+          <div class="uk-width-1-4"><%=image_tag(@portfolio_project.image_url)%></div>
+          <div class="uk-width-3-4">
+            <%= f.input :image, as: :image_preview %>
+          </div>
+        </div>
+        <hr>
+        <% @portfolio_project.images.each do |portfolio_image| %>
+            <%= f.simple_fields_for :images, portfolio_image do |imagef| %>
+            <div uk-grid>
+              <div class="uk-width-1-4">
+                <div class="uk-inline">
+                  <%=image_tag(portfolio_image.image_url)%>
+
+                  <div class="uk-position-top-right uk-padding-small uk-position-small uk-overlay-hover uk-overlay-primary uk-text-center">
+                    <%= link_to content_tag(:span, nil, 'uk-icon': :'icon: pencil', title: t(:edit)),
+                                edit_portfolio_image_path(portfolio_image) %>
+                    <%= link_to content_tag(:span, nil, 'uk-icon': :'icon: trash', title: t(:destroy)),
+                                portfolio_image, method: :delete, data: { confirm: t(:confirm) } %>
+                  </div>
+                </div>
+              </div>
+              <div class="uk-width-3-4">
+
+                <%= imagef.hidden_field :id, value: portfolio_image.id %>
+                <%= imagef.input :title %>
+                <%= imagef.input :content, input_html:{style: 'height: 40px;'} %>
+              </div>
+            </div>
+            <hr>
+            <% end %>
+        <% end %>
+       </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+

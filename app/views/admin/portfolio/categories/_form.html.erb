@@ -1,0 +1,25 @@
+<%= render 'layouts/admin/form/uploader' %>
+
+<%= simple_form_for @portfolio_category, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.title', default: action_name.titleize + ' Category')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}  %>
+
+  <%= f.input :title %>
+  <%= f.input :slug if @portfolio_category.slug.present? %>
+  <%= f.input :content %>
+
+  <% if @portfolio_categories.present? %>
+    <%= f.association :parent, collection: @portfolio_categories, prompt: :translate, input_html: {class: 'uk-select'}  %>
+  <% end %>
+
+  <%= f.input :image, as: :image_preview %>
+<% end %>
+

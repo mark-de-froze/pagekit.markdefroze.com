@@ -1,0 +1,15 @@
+<%%= simple_form_for @<%= singular_table_name %>, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%%= t('.title', default: action_name.titleize + ' <%= singular_table_name.split('_').last.titleize %>')%>
+    <div class="uk-align-right">
+      <%%= yield :links %>
+      <%%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%%= f.error_notification %>
+
+<%- attributes.each do |attribute| -%>
+  <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
+<%- end -%>
+<%% end %>
+

@@ -1,0 +1,6 @@
+<% content_for :links do %>
+    <%= link_to t(:back), users_roles_path, class: 'uk-button uk-button-default' %>
+<% end %>
+
+<%= render 'form', users_role: @users_role %>
+

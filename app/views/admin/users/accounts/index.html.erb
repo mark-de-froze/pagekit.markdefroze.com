@@ -1,0 +1,32 @@
+<legend class="uk-legend">
+  <%= t('.title', default: 'Accounts list')%>
+  <%= render 'layouts/admin/form/search' %>
+  <div class="uk-align-right">
+    <%= link_to t(:new), new_users_account_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</legend>
+
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+  <thead>
+  <tr>
+    <th><%= t('simple_form.labels.users_account.email', default: 'Email')%></th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users_accounts.each do |users_account| %>
+  <tr>
+    <td><%= users_account.email %></td>
+    <td class="uk-table-shrink"><%= link_to t(:show), users_account %></td>
+    <td class="uk-table-shrink"><%= link_to t(:edit), edit_users_account_path(users_account) %></td>
+    <td class="uk-table-shrink"><%= link_to t(:destroy), users_account, method: :delete, data: { confirm: t(:confirm) } %></td>
+  </tr>
+  <% end %>
+  <% if @users_accounts.empty? %>
+  <tr>
+    <td colspan="4"><h3 class="uk-text-muted uk-text-center"><%= t('.no_found', default: :no_found)%></h3></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= paginate @users_accounts, views_prefix: 'layouts/admin' %>

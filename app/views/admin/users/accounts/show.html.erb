@@ -1,0 +1,21 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <dl class="uk-description-list uk-description-list-divider">
+      <dt><%= t('simple_form.labels.users_account.email', default: 'Email')%></dt>
+      <dd><%= @users_account.email %></dd>
+
+      <dt><%= t('simple_form.labels.users_account.roles', default: 'Roles')%></dt>
+      <dd>
+        <ul class="uk-list">
+          <% @users_account.roles.each do |role| %>
+              <li><%=role.to_label%></li>
+          <% end %>
+        </ul>
+      </dd>
+    </dl>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_users_account_path(@users_account), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), users_accounts_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

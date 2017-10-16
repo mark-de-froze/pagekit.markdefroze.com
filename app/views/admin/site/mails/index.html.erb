@@ -1,0 +1,46 @@
+<legend class="uk-legend">
+  <%= t('.title', default: 'Mails list')%>
+  <%= render 'layouts/admin/form/search' %>
+  <div class="uk-align-right">
+    <%= link_to t(:new), new_site_mail_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</legend>
+
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+  <thead>
+  <tr>
+    <th class="uk-width-small"><%= t('simple_form.labels.site_mail.api_key', default: 'Client')%></th>
+    <th class="uk-table-shrink"><%= t('simple_form.labels.site_mail.from', default: 'From')%></th>
+    <th class="uk-table-expand"><%= t('simple_form.labels.site_mail.subject', default: 'Subject')%></th>
+    <th class="uk-table-auto"><%= t('simple_form.labels.site_mail.created_at', default: 'Created at')%></th>
+    <th class="uk-table-shrink" colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @site_mails.each do |site_mail| %>
+  <tr class="<%='uk-background-default' if site_mail.status == 'unread'%>">
+    <td><%= site_mail.client.site %></td>
+    <td>
+      <%= site_mail.from %>
+    </td>
+    <td class="uk-table-link">
+      <% if site_mail.status == 'unread' %>
+          <span class="uk-badge uk-float-right"><%= site_mail.status_text %></span>
+      <% end %>
+      <%= link_to site_mail.subject, site_mail, class: 'uk-link-reset' %>
+    </td>
+    <td><%= site_mail.created_at %></td>
+    <td class="uk-table-shrink"><%= link_to t(:show), site_mail %></td>
+    <td class="uk-table-shrink"><%= link_to t(:edit), edit_site_mail_path(site_mail) %></td>
+    <td class="uk-table-shrink"><%= link_to t(:destroy), site_mail, method: :delete, data: { confirm: t(:confirm) } %></td>
+  </tr>
+  <% end %>
+  <% if @site_mails.empty? %>
+  <tr>
+    <td colspan="8"><h3 class="uk-text-muted uk-text-center"><%= t('.no_found', default: :no_found)%></h3></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @site_mails, views_prefix: 'layouts/admin' %>

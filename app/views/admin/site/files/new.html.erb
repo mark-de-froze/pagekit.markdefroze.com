@@ -1,0 +1,6 @@
+<% content_for :links do %>
+    <%= link_to t(:back), site_files_path, class: 'uk-button uk-button-default' %>
+<% end %>
+
+<%= render 'form', site_file: @site_file %>
+

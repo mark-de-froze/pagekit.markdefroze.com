@@ -1,0 +1,1 @@
+json.partial! 'api/v1/portfolio/articles/article', article: @article

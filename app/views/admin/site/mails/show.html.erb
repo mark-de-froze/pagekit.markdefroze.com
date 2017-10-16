@@ -1,0 +1,24 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-header">
+    <h3 class="uk-card-title uk-margin-remove-bottom">
+      <%= t('simple_form.labels.site_mail.subject', default: 'Subject')%>:
+      <%= @site_mail.subject %>
+      <span class="uk-badge"><%= @site_mail.status_text %></span>
+    </h3>
+    <p class="uk-text-meta uk-margin-remove">
+      <%= t(:to)%>: <%= @site_mail.client.user.to_label %>
+    </p>
+    <p class="uk-text-meta uk-margin-remove">
+      <%= t('simple_form.labels.site_mail.from', default: 'From')%>: <%= @site_mail.from %>
+    </p>
+  </div>
+  <div class="uk-card-body">
+    <p class="uk-text-large">
+      <%= @site_mail.message %>
+    </p>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_site_mail_path(@site_mail), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), site_mails_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>
