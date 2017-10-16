@@ -1,6 +1,6 @@
 <%= simple_form_for @users_account, wrapper: :form do |f| %>
   <legend class="uk-legend">
-    <%= t('.title', default: action_name.titleize + ' Account')%>
+    <%= t('.'+action_name+'.title', default: action_name.titleize + ' Account')%>
     <div class="uk-align-right">
       <%= yield :links %>
       <%= f.button :submit, class: 'uk-button uk-button-primary' %>

@@ -10,7 +10,7 @@ module Prioritable
   end
 
   def priority_text
-    I18n.t("simple_form.options.#{model.to_s.gsub('::','_').downcase}.priority.#{priority.to_s}", default: priority.to_s.humanize)
+    I18n.t("simple_form.options.defaults.priority.#{priority.to_s}", default: priority.to_s.humanize)
   end
 
   def priorities

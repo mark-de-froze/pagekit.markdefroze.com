@@ -1,15 +1,15 @@
 <div class="uk-card uk-card-default">
   <div class="uk-card-body">
     <dl class="uk-description-list uk-description-list-divider">
-      <dt><%= t('simple_form.labels.site_file.api_key', default: 'Api key')%></dt>
+      <dt><%= t('simple_form.labels.defaults.client', default: 'Api key')%></dt>
       <dd><%= @site_file.api_key %></dd>
-      <dt><%= t('simple_form.labels.site_file.name', default: 'URL')%></dt>
+      <dt><%= t('simple_form.labels.defaults.name', default: 'URL')%></dt>
       <dd><%= @site_file.name %></dd>
-      <dt><%= t('simple_form.labels.site_file.image', default: 'Image')%></dt>
+      <dt><%= t('simple_form.labels.defaults.image', default: 'Image')%></dt>
       <dd><%= image_tag(@site_file.name, width: 250) %></dd>
-      <dt><%= t('simple_form.labels.site_file.size', default: 'Size')%></dt>
+      <dt><%= t('simple_form.labels.defaults.size', default: 'Size')%></dt>
       <dd><%= number_to_human_size(@site_file.size) %></dd>
-      <dt><%= t('simple_form.labels.site_file.modified', default: 'Modified')%></dt>
+      <dt><%= t('simple_form.labels.defaults.modified', default: 'Modified')%></dt>
       <dd><%= @site_file.modified %></dd>
     </dl>
   </div>

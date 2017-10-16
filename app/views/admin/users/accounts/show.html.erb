@@ -1,10 +1,10 @@
 <div class="uk-card uk-card-default">
   <div class="uk-card-body">
     <dl class="uk-description-list uk-description-list-divider">
-      <dt><%= t('simple_form.labels.users_account.email', default: 'Email')%></dt>
+      <dt><%= t('simple_form.labels.defaults.email', default: 'Email')%></dt>
       <dd><%= @users_account.email %></dd>
 
-      <dt><%= t('simple_form.labels.users_account.roles', default: 'Roles')%></dt>
+      <dt><%= t('simple_form.labels.defaults.roles', default: 'Roles')%></dt>
       <dd>
         <ul class="uk-list">
           <% @users_account.roles.each do |role| %>

@@ -1,37 +1,37 @@
 <div class="uk-card uk-card-default">
   <div class="uk-card-body">
     <dl class="uk-description-list uk-description-list-divider">
-      <dt><%= t('simple_form.labels.portfolio_project.api_key', default: 'Client')%></dt>
+      <dt><%= t('simple_form.labels.defaults.client', default: 'Client')%></dt>
       <dd><%= @portfolio_project.client.site %></dd>
-      <dt><%= t('simple_form.labels.portfolio_project.title', default: 'Title')%></dt>
+      <dt><%= t('simple_form.labels.defaults.title', default: 'Title')%></dt>
       <dd><%= @portfolio_project.title %></dd>
-      <dt><%= t('simple_form.labels.portfolio_project.subtitle', default: 'Subtitle')%></dt>
+      <dt><%= t('simple_form.labels.defaults.subtitle', default: 'Subtitle')%></dt>
       <dd><%= @portfolio_project.subtitle %></dd>
-      <dt><%= t('simple_form.labels.portfolio_project.slug', default: 'URL')%></dt>
+      <dt><%= t('simple_form.labels.defaults.slug', default: 'URL')%></dt>
       <dd><%= @portfolio_project.slug %></dd>
-      <dt><%= t('simple_form.labels.portfolio_project.content', default: 'Content')%></dt>
+      <dt><%= t('simple_form.labels.defaults.content', default: 'Content')%></dt>
       <dd><%= @portfolio_project.content %></dd>
-      <dt><%= t('simple_form.labels.portfolio_project.status', default: 'Status')%></dt>
+      <dt><%= t('simple_form.labels.defaults.status', default: 'Status')%></dt>
       <dd><%= @portfolio_project.status_text %></dd>
-      <dt><%= t('simple_form.labels.portfolio_project.priority', default: 'Priority')%></dt>
+      <dt><%= t('simple_form.labels.defaults.priority', default: 'Priority')%></dt>
       <dd><%= @portfolio_project.priority_text %></dd>
-      <dt><%= t('simple_form.labels.portfolio_project.customer', default: 'Customer')%></dt>
+      <dt><%= t('simple_form.labels.defaults.customer', default: 'Customer')%></dt>
       <dd><%= @portfolio_project.customer %></dd>
-      <dt><%= t('simple_form.labels.portfolio_project.portfolio_category', default: 'Category')%></dt>
+      <dt><%= t('simple_form.labels.defaults.category', default: 'Category')%></dt>
       <dd><%= link_to @portfolio_project.category.to_label, @portfolio_project.category %></dd>
-      <dt><%= t('simple_form.labels.portfolio_project.published_at', default: 'Published at')%></dt>
+      <dt><%= t('simple_form.labels.defaults.published_at', default: 'Published at')%></dt>
       <dd><%= @portfolio_project.published_at %></dd>
 
-      <dt><%= t('simple_form.labels.portfolio_project.image', default: 'Image')%></dt>
+      <dt><%= t('simple_form.labels.defaults.image', default: 'Image')%></dt>
       <dd><%= image_tag(@portfolio_project.image_url, size: '250x150') if @portfolio_project.image.present? %></dd>
-      <dt><%= t('simple_form.labels.portfolio_project.images', default: 'Images')%></dt>
+      <dt><%= t('simple_form.labels.defaults.images', default: 'Images')%></dt>
       <dd>
         <% @portfolio_project.images.each  do |image|%>
         <%= image_tag(image.image_url, size: '250x150') if image.image.present? %>
         <% end %>
       </dd>
 
-      <dt><%= t('simple_form.labels.portfolio_project.feedback')%></dt>
+      <dt><%= t('simple_form.labels.defaults.feedback')%></dt>
       <dd>
         <%= @portfolio_project.feedback.content if @portfolio_project.feedback %>
       </dd>

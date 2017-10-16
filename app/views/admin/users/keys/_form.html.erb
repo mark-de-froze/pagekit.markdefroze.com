@@ -2,7 +2,7 @@
 
 <%= simple_form_for @users_key, html: {class: 'uk-form-stacked'}, wrapper: :form do |f| %>
   <legend class="uk-legend">
-    <%= t('.title', default: action_name.titleize + ' Key')%>
+    <%= t('.'+action_name+'.title', default: action_name.titleize + ' Key')%>
     <div class="uk-align-right">
       <%= yield :links %>
       <%= f.button :submit, class: 'uk-button uk-button-primary' %>

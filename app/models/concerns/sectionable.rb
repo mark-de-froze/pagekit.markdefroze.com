@@ -8,7 +8,7 @@ module Sectionable
   end
 
   def section_text
-    I18n.t("simple_form.options.#{model.to_s.gsub('::','_').downcase}.section.#{status.to_s}", default: status.to_s.humanize)
+    I18n.t("simple_form.options.defaults.section.#{status.to_s}", default: status.to_s.humanize)
   end
 
   def sections

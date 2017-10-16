@@ -1,0 +1,177 @@
+en:
+  hello: "Hello world"
+  new: "New"
+  show: "Show"
+  edit: "Edit"
+  destroy: "Delete"
+  upload: "Upload"
+  confirm: "Are you sure?"
+  back: "Back"
+  no_found: "No found"
+  written_by: "Written by"
+  ago: "ago"
+  to: "To"
+  from: "From"
+  on: "on"
+  all: "All"
+  positions: "Positions"
+
+  is_used: "%{size} of %{max} is used"
+
+  admin:
+    portfolio:
+      projects:
+        index:
+          title: "Projects"
+        form:
+          new:
+            title: "New Project"
+          edit:
+            title: "Editing Project"
+      images:
+        index:
+          title: "Images"
+        form:
+          new:
+            title: "New Image"
+          edit:
+            title: "Editing Image"
+      categories:
+        index:
+          title: "Categories"
+        form:
+          new:
+            title: "New Category"
+          edit:
+            title: "Editing Category"
+      feedbacks:
+        index:
+          title: "Feedbacks"
+        form:
+          new:
+            title: "New Feedback"
+          edit:
+            title: "Editing Feedback"
+      articles:
+        index:
+          title: "Articles"
+        form:
+          new:
+            title: "New Article"
+          edit:
+            title: "Editing Article"
+    site:
+      pages:
+        index:
+          title: "Pages"
+        form:
+          new:
+            title: "New Page"
+          edit:
+            title: "Editing Page"
+      widgets:
+        index:
+          title: "Widgets"
+        form:
+          new:
+            title: "New Widget"
+          edit:
+            title: "Editing Widget"
+      links:
+        index:
+          title: "Links"
+        form:
+          new:
+            title: "New Link"
+          edit:
+            title: "Editing Link"
+      files:
+        index:
+          title: "Files"
+        form:
+          new:
+            title: "New File"
+      mails:
+        index:
+          title: "Mails"
+        form:
+          new:
+            title: "New Mail"
+          edit:
+            title: "Editing Mail"
+      settings:
+        index:
+          title: "Settings"
+        form:
+          new:
+            title: "New Setting"
+          edit:
+            title: "Editing Setting"
+    users:
+      accounts:
+        index:
+          title: "Accounts"
+        form:
+          new:
+            title: "New Account"
+          edit:
+            title: "Editing Account"
+      roles:
+        index:
+          title: "Roles"
+      keys:
+        index:
+          title: "API keys"
+
+  simple_form:
+    labels:
+      defaults:
+        created_at: "Created at"
+        updated_at: "Updated at"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password Confirmation"
+        roles: "Roles"
+        name: "Name"
+        title: "Title"
+        subtitle: "Subtitle"
+        content: "Content"
+        resource_type: "Resource type"
+        resource: "Resource"
+        api_key: "API key"
+        site: "Site"
+        user: "User"
+        image: "Image"
+        images: "Images"
+        status: "Status"
+        slug: "URL"
+        url: "URL"
+        client: "Client"
+        section: "Section"
+        position: "Position"
+        is_visible_main: "Is visible main"
+        is_visible_offcanvas: "Is visible offcanvas"
+        size: "Size"
+        modified: "Modified"
+        from: "From"
+        from_name: "Name"
+        from_email: "Email"
+        subject: "Subject"
+        category: "Category"
+        published_at: "Published at"
+        customer: "Customer"
+        feedback: "Feedback"
+        project: "Project"
+        priority: "Priority"
+        parent: "Parent category"
+        tags: "Tags"
+    options:
+      defaults:
+        status:
+          enabled: "Enabled"
+          disabled: "Disabled"
+          read: "Read"
+          unread: "Unread"
+          published: "Published"
+          draft: "Draft"
+          unpublished: "Unpublished"
