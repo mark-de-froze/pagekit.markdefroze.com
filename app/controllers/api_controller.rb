@@ -1,4 +1,4 @@
-class ApiController < ApplicationController
+class ApiController < ActionController::Base
   include Response
   include ExceptionHandler
   include ActionController::ImplicitRender
