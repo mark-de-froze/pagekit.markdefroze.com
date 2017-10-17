@@ -1,3 +1,3 @@
-json.array! @links do |link|
-  json.partial! 'api/v1/site/links/link', link: link
+@site_links_sections.each do |section|
+  json.set! section, @links[section]
 end

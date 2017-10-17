@@ -9,7 +9,7 @@ class Admin::Site::WidgetsController < AdminController
     @position = params[:position].to_s.html_safe
 
     @site_widgets = Site::Widget.unscoped
-                      .order(:updated_at)
+                      .order(updated_at: :desc)
                       .api(@api_keys_array)
                       .search(:title, @search)
                       .page(params[:page])

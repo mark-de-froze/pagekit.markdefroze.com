@@ -8,7 +8,7 @@ class Admin::Site::MailsController < AdminController
     @search = params[:search].to_s.html_safe
 
     @site_mails = Site::Mail.unscoped
-                      .order(:updated_at)
+                      .order(updated_at: :desc)
                       .api(@api_keys_array)
                       .search(:subject, @search)
                       .page(params[:page])

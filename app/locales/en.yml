@@ -15,6 +15,8 @@ en:
   on: "on"
   all: "All"
   positions: "Positions"
+  login: "Login"
+  logout: "Logout"
 
   is_used: "%{size} of %{max} is used"
 
@@ -124,6 +126,11 @@ en:
           title: "API keys"
 
   simple_form:
+    placeholders:
+      defaults:
+        email: "Enter email"
+        password: "Enter password"
+        remember_me: "Remember me?"
     labels:
       defaults:
         created_at: "Created at"

@@ -19,7 +19,7 @@
   <tbody>
   <% @site_pages.each do |site_page| %>
   <tr>
-    <td><%= site_page.client.site %></td>
+    <td><%= link_to site_page.client.site, api_v1_site_page_url(site_page.id, api_key: site_page.api_key) %></td>
     <td><%= site_page.title %></td>
     <td class="uk-text-center"><span title="<%= site_page.status_text %>" class="uk-icon-circle-<%= site_page.status %>"></span></td>
     <td><%= link_to site_page.slug, site_page %></td>

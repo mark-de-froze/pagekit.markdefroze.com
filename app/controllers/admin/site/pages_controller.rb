@@ -8,7 +8,7 @@ class Admin::Site::PagesController < AdminController
     @search = params[:search].to_s.html_safe
 
     @site_pages = Site::Page.unscoped
-                      .order(:updated_at)
+                      .order(updated_at: :desc)
                       .api(@api_keys_array)
                       .search(:title, @search)
                       .page(params[:page])

@@ -12,7 +12,7 @@ class Admin::Portfolio::ProjectsController < AdminController
     @portfolio_projects = Portfolio::Project.unscoped
                               .api(@api_keys_array)
                               .search(:title, @search)
-                              .order(:updated_at)
+                              .order(updated_at: :desc)
                               .page(params[:page])
   end
 

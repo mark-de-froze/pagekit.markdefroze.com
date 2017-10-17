@@ -8,6 +8,7 @@ class Admin::Users::AccountsController < AdminController
     @search = params[:search].to_s.html_safe
 
     @users_accounts = Users::Account
+                          .order(updated_at: :desc)
                           .search(:email, @search)
                           .page(params[:page])
   end

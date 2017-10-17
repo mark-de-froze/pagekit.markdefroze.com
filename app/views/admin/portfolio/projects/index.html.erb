@@ -24,7 +24,7 @@
   <tbody>
   <% @portfolio_projects.each do |portfolio_project| %>
   <tr>
-    <td><%= portfolio_project.client.site %></td>
+    <td><%= link_to portfolio_project.client.site, api_v1_portfolio_project_url(portfolio_project.id, api_key: portfolio_project.api_key) %></td>
     <td>
       <%= portfolio_project.title %> <br>
       <%= portfolio_project.subtitle %>

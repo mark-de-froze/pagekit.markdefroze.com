@@ -15,7 +15,7 @@ class Admin::Portfolio::CategoriesController < AdminController
                                 .api(@api_keys_array)
                                 .search(:title, @search)
                                 .parental
-                                .order(:updated_at)
+                                .order(updated_at: :desc)
                                 .page(params[:page])
   end
 

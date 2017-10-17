@@ -20,7 +20,7 @@
   <tbody>
   <% @portfolio_feedbacks.each do |portfolio_feedback| %>
   <tr>
-    <td><%= portfolio_feedback.client.site %></td>
+    <td><%= link_to portfolio_feedback.client.site, api_v1_portfolio_feedback_url(portfolio_feedback, api_key: portfolio_feedback.api_key) %></td>
     <td>
       <%= image_tag(portfolio_feedback.project.image_url, style: 'height: 40px') if portfolio_feedback.project.image %>
     </td>

@@ -11,7 +11,7 @@ class Admin::Portfolio::ImagesController < AdminController
 
     @portfolio_images = Portfolio::Image.unscoped
                             .search(:title, @search)
-                            .order(:updated_at)
+                            .order(updated_at: :desc)
                             .page(params[:page])
   end
 

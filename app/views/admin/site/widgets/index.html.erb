@@ -30,7 +30,7 @@
       <tbody>
       <% @site_widgets.each do |site_widget| %>
           <tr>
-            <td><%= site_widget.client.site %></td>
+            <td><%= link_to site_widget.client.site, api_v1_site_widgets_url(api_key: site_widget.api_key) %></td>
             <td><%= site_widget.title %></td>
             <td class="uk-text-center"><span title="<%= site_widget.status_text %>" class="uk-icon-circle-<%= site_widget.status %>"></span></td>
             <td class="uk-table-shrink"><%= link_to t(:show), site_widget %></td>

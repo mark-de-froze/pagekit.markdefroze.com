@@ -8,7 +8,8 @@ class Admin::Site::FilesController < AdminController
   def index
     @search = params[:search].to_s.html_safe
 
-    @site_files = Site::File.order(:updated_at)
+    @site_files = Site::File
+                      .order(updated_at: :desc)
                       .api(@api_keys_array)
                       .search(:name, @search)
                       .page(params[:page])

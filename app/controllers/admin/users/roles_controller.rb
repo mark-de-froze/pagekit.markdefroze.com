@@ -8,6 +8,7 @@ class Admin::Users::RolesController < AdminController
     @search = params[:search].to_s.html_safe
 
     @users_roles = Users::Role
+                       .order(updated_at: :desc)
                        .search(:name, @search)
                        .page(params[:page])
   end

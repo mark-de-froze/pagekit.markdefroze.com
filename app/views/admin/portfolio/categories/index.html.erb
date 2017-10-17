@@ -19,7 +19,7 @@
   <tbody>
   <% @portfolio_categories.each do |portfolio_category| %>
   <tr>
-    <td><%= portfolio_category.client.site %></td>
+    <td><%= link_to portfolio_category.client.site, api_v1_portfolio_category_url(portfolio_category, api_key: portfolio_category.api_key) %></td>
     <td><%= portfolio_category.title %></td>
     <td><%= link_to portfolio_category.slug, portfolio_category %></td>
     <td><%= image_tag(portfolio_category.image_url, style: 'height: 40px') if portfolio_category.image.present? %></td>

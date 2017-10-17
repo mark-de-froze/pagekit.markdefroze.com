@@ -8,6 +8,7 @@ class Admin::Site::SettingsController < AdminController
     @search = params[:search].to_s.html_safe
 
     @site_settings = Site::Setting
+                         .order(updated_at: :desc)
                          .api(@api_keys_array)
                          .search(:key, @search)
                          .page(params[:page])

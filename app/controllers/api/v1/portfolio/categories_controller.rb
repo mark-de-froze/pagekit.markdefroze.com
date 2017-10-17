@@ -1,7 +1,7 @@
 class Api::V1::Portfolio::CategoriesController < ApiController
 
   def index
-    @categories = Portfolio::Category.api(@api_key).order(:updated_at).parental
+    @categories = Portfolio::Category.api(@api_key).order(updated_at: :desc).parental
   end
 
   def show

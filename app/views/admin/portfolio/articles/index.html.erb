@@ -21,7 +21,7 @@
   <tbody>
   <% @portfolio_articles.each do |portfolio_article| %>
   <tr>
-    <td><%= portfolio_article.client.site %></td>
+    <td><%= link_to portfolio_article.client.site, api_v1_portfolio_article_url(portfolio_article.id, api_key: portfolio_article.api_key) %></td>
     <td><%= portfolio_article.title %></td>
     <td><%= link_to portfolio_article.slug, portfolio_article %></td>
     <td class="uk-text-center"><span title="<%= portfolio_article.status_text %>" class="uk-icon-circle-<%= portfolio_article.status %>"></span></td>

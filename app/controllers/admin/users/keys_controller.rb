@@ -9,6 +9,7 @@ class Admin::Users::KeysController < AdminController
     @search = params[:search].to_s.html_safe
 
     @users_keys = Users::Key
+                      .order(updated_at: :desc)
                       .search(:title, @search)
                       .page(params[:page])
   end

@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="uk-card-body">
-            <h3 class="uk-card-title"><%= portfolio_image.project.to_label %></h3>
+            <h3 class="uk-card-title"><%= portfolio_image.project.to_label  if portfolio_image.project.present? %></h3>
             <p><%= portfolio_image.title %></p>
           </div>
 

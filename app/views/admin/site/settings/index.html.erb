@@ -19,10 +19,10 @@
   <tbody>
   <% @site_settings.each do |site_setting| %>
   <tr>
-    <td><%= site_setting.client.site %></td>
+    <td><%= link_to site_setting.client.site, api_v1_site_settings_url(api_key: site_setting.api_key) %></td>
     <td><%= site_setting.section %></td>
     <td><%= site_setting.key %></td>
-    <td><%= site_setting.value %></td>
+    <td class="uk-table-link"><%= site_setting.value %></td>
     <td class="uk-table-shrink"><%= link_to t(:show), site_setting %></td>
     <td class="uk-table-shrink"><%= link_to t(:edit), edit_site_setting_path(site_setting) %></td>
     <td class="uk-table-shrink"><%= link_to t(:destroy), site_setting, method: :delete, data: { confirm: t(:confirm) } %></td>
