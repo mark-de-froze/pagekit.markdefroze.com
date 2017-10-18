@@ -1,4 +1,5 @@
 class Key < ApplicationRecord
+  include Keyable
   include Imageable
   include Searchable
 
@@ -7,7 +8,10 @@ class Key < ApplicationRecord
   resourcify
 
   validates :title, :site, presence: true
-  validates :api_key, length: { is: 32 }
+
+  def to_label_user
+    "#{user.to_label}"
+  end
 
   def to_label
     "#{site} - #{title}"

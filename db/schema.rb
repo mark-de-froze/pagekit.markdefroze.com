@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171014130011) do
+ActiveRecord::Schema.define(version: 20171018081624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blog_comments", force: :cascade do |t|
+    t.string "api_key"
+    t.string "from_name"
+    t.string "from_email"
+    t.text "comment"
+    t.integer "status"
+    t.bigint "blog_post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_post_id"], name: "index_blog_comments_on_blog_post_id"
+  end
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.string "api_key"
+    t.string "title"
+    t.string "slug"
+    t.text "content"
+    t.integer "status"
+    t.bigint "user_id"
+    t.string "tags"
+    t.datetime "published_at"
+    t.string "image"
+    t.string "metatitle"
+    t.text "metakeywords"
+    t.text "metadescription"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_blog_posts_on_user_id"
+  end
 
   create_table "keys", force: :cascade do |t|
     t.string "api_key"
@@ -127,13 +157,14 @@ ActiveRecord::Schema.define(version: 20171014130011) do
   end
 
   create_table "site_mails", force: :cascade do |t|
-    t.string "from"
+    t.string "from_name"
     t.string "subject"
     t.text "message"
     t.integer "status"
     t.string "api_key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "from_email"
   end
 
   create_table "site_pages", force: :cascade do |t|
@@ -195,6 +226,8 @@ ActiveRecord::Schema.define(version: 20171014130011) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "blog_comments", "blog_posts"
+  add_foreign_key "blog_posts", "users"
   add_foreign_key "keys", "users"
   add_foreign_key "portfolio_feedbacks", "portfolio_projects"
   add_foreign_key "portfolio_images", "portfolio_projects"

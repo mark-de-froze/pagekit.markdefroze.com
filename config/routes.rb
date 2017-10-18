@@ -21,6 +21,12 @@ Rails.application.routes.draw do
         resources :settings
       end
 
+      namespace :blog do
+        get '/', to: 'posts#index'
+        resources :posts
+        resources :comments
+      end
+
       namespace :portfolio do
         get '/', to: 'projects#index'
         resources :projects
@@ -49,6 +55,11 @@ Rails.application.routes.draw do
         resources :feedbacks
         resources :categories
         resources :articles
+      end
+
+      namespace :blog do
+        resources :posts
+        resources :comments
       end
     end
   end

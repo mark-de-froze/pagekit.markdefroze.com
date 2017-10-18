@@ -1,0 +1,8 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <%= render 'admin/blog/comments/comment', comment: @blog_comment %>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:back), blog_comments_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

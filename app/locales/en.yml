@@ -12,8 +12,9 @@ en:
   ago: "ago"
   to: "To"
   from: "From"
-  on: "on"
+  "on": "on"
   all: "All"
+  posted_in: "Posted in"
   positions: "Positions"
   login: "Login"
   logout: "Logout"
@@ -21,6 +22,25 @@ en:
   is_used: "%{size} of %{max} is used"
 
   admin:
+    blog:
+      posts:
+        index:
+          title: "Posts"
+        form:
+          new:
+            title: "New Post"
+          edit:
+            title: "Editing Post"
+      comments:
+        index:
+          title: "Comments"
+        form:
+          title: "Leave a comment"
+          new:
+            title: "New Comment"
+          edit:
+            title: "Editing Comment"
+
     portfolio:
       projects:
         index:
@@ -172,6 +192,8 @@ en:
         priority: "Priority"
         parent: "Parent category"
         tags: "Tags"
+        author: "Author"
+        date: "Date"
     options:
       defaults:
         status:

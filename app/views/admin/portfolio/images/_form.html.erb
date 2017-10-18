@@ -12,7 +12,7 @@
 
   <%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}  %>
 
-  <%= f.association :project, prompt: :translate, input_html: {class: 'uk-select'}  %>
+  <%= f.association :project, prompt: :translate, collection: @projects, input_html: {class: 'uk-select'}  %>
 
   <%= f.input :image, as: :image_preview %>
   <%= f.input :title %>

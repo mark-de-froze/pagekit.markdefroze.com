@@ -27,6 +27,7 @@ class AdminController < ApplicationController
   def set_api_keys
     if current_user.has_role? :administrator
       @api_keys = Users::Key.all
+      @api_keys_array = @api_keys.collect {|k| k.api_key }.compact
     else
       @api_keys = current_user.keys
       @api_keys_array = @api_keys.collect {|k| k.api_key }.compact

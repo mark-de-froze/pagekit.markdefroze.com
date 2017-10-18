@@ -1,4 +1,4 @@
-json.extract! project, :id, :title, :subtitle, :slug, :content, :priority, :status, :customer, :image, :published_at
+json.extract! project, :id, :title, :subtitle, :slug, :content, :priority, :status, :customer, :image, :metadescription, :metakeywords, :metatitle, :published_at
 json.images do
   json.array! project.images do |image|
     json.partial! 'api/v1/portfolio/images/image', image: image

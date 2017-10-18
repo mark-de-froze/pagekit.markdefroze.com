@@ -72,6 +72,6 @@ class Admin::Portfolio::ProjectsController < AdminController
 
     # Only allow a trusted parameter "white list" through.
     def portfolio_project_params
-      params.require(:portfolio_project).permit(:api_key, :title, :subtitle, :slug, :content, :status, :priority, :customer, :portfolio_category_id, :published_at, :image, images_attributes: [ :id, :title, :content ] )
+      params.require(:portfolio_project).permit(:api_key, :title, :subtitle, :slug, :content, :status, :priority, :customer, :portfolio_category_id, :published_at, :metatitle, :metakeywords, :metadescription, :image, images_attributes: [ :id, :title, :content ] )
     end
 end

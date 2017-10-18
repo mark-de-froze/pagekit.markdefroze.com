@@ -55,3 +55,5 @@ gem 'rack-cors'
 gem 'jbuilder', '~> 2.5'
 
 gem 'i18n-debug', group: :development
+
+gem 'gravtastic'

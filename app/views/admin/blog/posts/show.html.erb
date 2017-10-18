@@ -1,0 +1,39 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <article class="uk-article">
+      <%  if @blog_post.image.present? %>
+          <div class="uk-cover-container uk-height-medium">
+            <div uk-cover><%= image_tag(@blog_post.image_url) %></div>
+          </div>
+      <% end %>
+
+      <h1 class="uk-article-title"><%= @blog_post.title %> <span class="uk-badge"><%= @blog_post.status_text %> </span></h1>
+
+      <p class="uk-article-meta">
+        <%=t(:written_by)%> <%= @blog_post.user.to_label %> <%=t(:on)%> <%=date(@blog_post.published_at)%>.
+        <%= t(:posted_in) %> <%=@blog_post.client.site%>
+      </p>
+
+      <p><%= @blog_post.content %></p>
+
+      <p class="uk-article-meta">
+        <%= @blog_post.tags %>
+      </p>
+    </article>
+
+    <div class="uk-width-xlarge" id="comments">
+      <%= render 'admin/blog/comments/form', blog_comment: @post_comment %>
+    </div>
+    <ul class="uk-comment-list">
+    <% @post_comments.each do |post_comment| %>
+      <li>
+        <%= render 'admin/blog/comments/comment', comment: post_comment %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_blog_post_path(@blog_post), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), blog_posts_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

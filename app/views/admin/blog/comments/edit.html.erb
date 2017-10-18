@@ -1,0 +1,7 @@
+<% content_for :links do %>
+    <%= link_to t(:back), blog_comments_path, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:show), @blog_comment, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:destroy), @blog_comment, method: :delete, class: 'uk-button uk-button-danger', data: { confirm: t(:confirm) } %>
+<% end %>
+
+<%= render 'form', blog_comment: @blog_comment %>

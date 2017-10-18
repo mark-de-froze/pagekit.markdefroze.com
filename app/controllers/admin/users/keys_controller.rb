@@ -1,8 +1,10 @@
 class Admin::Users::KeysController < AdminController
+  include Uploader
+
   load_and_authorize_resource param_method: :users_key_params, class: 'Users::Key'
 
   before_action :set_users_key, only: [:show, :edit, :update, :destroy]
-  before_action :set_uploader, only: [:edit, :update]
+  before_action :set_image, only: [:edit]
 
   # GET /users/keys
   def index
@@ -60,11 +62,8 @@ class Admin::Users::KeysController < AdminController
       @users_key = Users::Key.find(params[:id])
     end
 
-    def set_uploader
-      @uploader = Site::File.new.name
-      @uploader.success_action_redirect = new_site_file_url(redirect: edit_users_key_path(@users_key))
-
-      @users_key.image = @uploader.direct_fog_url+params[:key] if params[:key].present?
+    def set_image
+      @users_key.image = image_url
     end
 
     # Only allow a trusted parameter "white list" through.
