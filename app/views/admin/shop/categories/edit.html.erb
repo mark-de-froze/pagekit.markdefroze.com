@@ -1,0 +1,7 @@
+<% content_for :links do %>
+    <%= link_to t(:back), shop_categories_path, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:show), @shop_category, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:destroy), @shop_category, method: :delete, class: 'uk-button uk-button-danger', data: { confirm: t(:confirm) } %>
+<% end %>
+
+<%= render 'form', shop_category: @shop_category %>

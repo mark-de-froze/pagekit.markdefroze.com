@@ -57,3 +57,5 @@ gem 'jbuilder', '~> 2.5'
 gem 'i18n-debug', group: :development
 
 gem 'gravtastic'
+gem 'devise-i18n'
+gem 'rails-i18n', '~> 5.0.0'

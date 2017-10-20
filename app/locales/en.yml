@@ -18,11 +18,55 @@ en:
   positions: "Positions"
   login: "Login"
   logout: "Logout"
-
   is_used: "%{size} of %{max} is used"
+  content: "Content"
+  info: "Info"
+  meta: "Meta"
+  unit: "unit"
+  order: "Order"
+  product: "Product"
 
   admin:
+    shop:
+      index:
+        title: "Shop"
+      products:
+        index:
+          title: "Products"
+        form:
+          new:
+            title: "New Product"
+          edit:
+            title: "Editing Product"
+      categories:
+        index:
+          title: "Categories"
+        form:
+          new:
+            title: "New Category"
+          edit:
+            title: "Editing Category"
+      orders:
+        index:
+          title: "Orders"
+        show:
+          title: "Order status"
+        form:
+          new:
+            title: "New Order"
+          edit:
+            title: "Editing Order"
+      details:
+        index:
+          title: "Details"
+        form:
+          new:
+            title: "New Detail"
+          edit:
+            title: "Editing Detail"
     blog:
+      index:
+        title: "Blog"
       posts:
         index:
           title: "Posts"
@@ -35,13 +79,16 @@ en:
         index:
           title: "Comments"
         form:
-          title: "Leave a comment"
+          show:
+            title: "Leave a comment"
           new:
             title: "New Comment"
           edit:
             title: "Editing Comment"
 
     portfolio:
+      index:
+        title: "Portfolio"
       projects:
         index:
           title: "Projects"
@@ -83,6 +130,8 @@ en:
           edit:
             title: "Editing Article"
     site:
+      index:
+        title: "Site"
       pages:
         index:
           title: "Pages"
@@ -130,6 +179,8 @@ en:
           edit:
             title: "Editing Setting"
     users:
+      index:
+        title: "Users"
       accounts:
         index:
           title: "Accounts"
@@ -141,11 +192,31 @@ en:
       roles:
         index:
           title: "Roles"
+        form:
+          new:
+            title: "New Role"
+          edit:
+            title: "Editing Role"
       keys:
         index:
           title: "API keys"
+        form:
+          new:
+            title: "New API key"
+          edit:
+            title: "Editing API key"
+    dashboard:
+      index:
+        title: "Dashboard"
 
   simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+    error_notification:
+      default_message: "Please review the problems below:"
     placeholders:
       defaults:
         email: "Enter email"
@@ -183,17 +254,45 @@ en:
         from: "From"
         from_name: "Name"
         from_email: "Email"
+        from_phone: "Phone"
         subject: "Subject"
         category: "Category"
         published_at: "Published at"
         customer: "Customer"
         feedback: "Feedback"
+        order: "Order"
         project: "Project"
         priority: "Priority"
         parent: "Parent category"
         tags: "Tags"
         author: "Author"
         date: "Date"
+        amount: "Amount"
+        coupon: "Coupon"
+        note: "Note"
+        paymented_at: "Paymented at"
+        delivered_at: "Delivered at"
+        shipped_at: "Shipped at"
+        tracking_number: "Tracking number"
+        delivery_zipcode: "Zipcode"
+        delivery_address: "Delivery address"
+        address: "Address"
+        quantity: "Quantity"
+        locale: "Locale"
+        key: "Key"
+        value: "Value"
+        comment: "Comment"
+        blog_post: "Blog post"
+        price: "Price"
+        sku: "SKU"
+        in_stock: "In stock"
+        weigth: "Weigth"
+        product_price: "Price"
+        location: "Location"
+        delivery: "Delivery"
+        delivery_price: "Delivery price"
+        shop_product: "Product"
+        product: "Product"
     options:
       defaults:
         status:
@@ -204,3 +303,26 @@ en:
           published: "Published"
           draft: "Draft"
           unpublished: "Unpublished"
+          accepted: "Accepted"
+          processed: "Processed"
+          pending: "Pending payment"
+          shipped: "Shipped"
+          delivered: "Delivered"
+          waiting: "Waiting to receive"
+          canceled: "Canceled"
+          completed: "Completed"
+        delivery:
+          no_delivery: "None"
+          pickup: "Pickup from the issuing point"
+          post: "Only by post"
+          on_world: "On world by transport company of your choice"
+          only_on_country: "Only on current country by transport company of your choice"
+          only_on_city: "Only on current city by transport company of your choice"
+          only_on_city_courier: "Only on current city by courier service"
+        section:
+          contact: "Contact"
+          app: "App"
+  helpers:
+    submit:
+      create: 'Create %{model}'
+      update: 'Update %{model}'

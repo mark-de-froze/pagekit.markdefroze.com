@@ -61,9 +61,9 @@ class Admin::Users::AccountsController < AdminController
     # Only allow a trusted parameter "white list" through.
     def users_account_params
       if params.require(:users_account)[:password].blank? and params.require(:users_account)[:password_confirmation].blank?
-        params.require(:users_account).permit(:email, { role_ids:[] })
+        params.require(:users_account).permit(:email, :locale, { role_ids:[] })
       else
-        params.require(:users_account).permit(:password, :password_confirmation, :email, { role_ids:[] })
+        params.require(:users_account).permit(:password, :password_confirmation, :email, :locale, { role_ids:[] })
       end
     end
 end

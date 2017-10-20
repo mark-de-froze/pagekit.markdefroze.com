@@ -1,0 +1,43 @@
+<div class="uk-card uk-card-default uk-grid-collapse uk-margin" uk-grid>
+  <div class="uk-card-media-left uk-cover-container uk-width-medium">
+    <%= image_tag @shop_product.image_url %>
+  </div>
+  <div class="uk-width-expand">
+    <div class="uk-card-body">
+      <dl class="uk-description-list uk-description-list-divider">
+      <dt><%= t('simple_form.labels.defaults.client', default: 'Api key')%></dt>
+      <dd><%= @shop_product.client.site %></dd>
+      <dt><%= t('simple_form.labels.defaults.title', default: 'Title')%></dt>
+      <dd><%= @shop_product.title %></dd>
+      <dt><%= t('simple_form.labels.defaults.slug', default: 'Slug')%></dt>
+      <dd><%= @shop_product.slug %></dd>
+      <dt><%= t('simple_form.labels.defaults.content', default: 'Content')%></dt>
+      <dd><%= @shop_product.content %></dd>
+      <dt><%= t('simple_form.labels.defaults.status', default: 'Status')%></dt>
+      <dd><%= @shop_product.status_text %></dd>
+      <dt><%= t('simple_form.labels.defaults.category', default: 'Shop category')%></dt>
+      <dd><%= link_to @shop_product.category.to_label, @shop_product.category %></dd>
+      <dt><%= t('simple_form.labels.defaults.price', default: 'Product price')%></dt>
+      <dd><%= @shop_product.product_price %></dd>
+      <dt><%= t('simple_form.labels.defaults.delivery_price', default: 'Delivery price')%></dt>
+      <dd><%= @shop_product.delivery_price %></dd>
+      <dt><%= t('simple_form.labels.defaults.sku', default: 'Sku')%></dt>
+      <dd><%= @shop_product.sku %></dd>
+      <dt><%= t('simple_form.labels.defaults.weigth', default: 'Weigth')%></dt>
+      <dd><%= @shop_product.weigth %></dd>
+      <dt><%= t('simple_form.labels.defaults.location', default: 'Location')%></dt>
+      <dd><%= @shop_product.location %></dd>
+      <dt><%= t('simple_form.labels.defaults.delivery', default: 'Delivery')%></dt>
+      <dd><%= @shop_product.delivery_text %></dd>
+      <dt><%= t('simple_form.labels.defaults.in_stock', default: 'In stock')%></dt>
+      <dd><%= @shop_product.in_stock %> <%= t(:unit) %></dd>
+      <dt><%= t('simple_form.labels.defaults.note', default: 'Note')%></dt>
+      <dd><%= @shop_product.note %></dd>
+    </dl>
+    </div>
+    <div class="uk-card-footer">
+      <%= link_to t(:edit), edit_shop_product_path(@shop_product), class: 'uk-button uk-button-text' %> |
+      <%= link_to t(:back), shop_products_path, class: 'uk-button uk-button-text' %>
+    </div>
+  </div>
+</div>

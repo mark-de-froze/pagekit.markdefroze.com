@@ -9,8 +9,9 @@ module Statusable
     validates :status, presence: true
   end
 
-  def status_text
-    I18n.t("simple_form.options.defaults.status.#{status.to_s}", default: status.to_s.humanize)
+  def status_text(val = nil)
+    val = status if val.nil?
+    I18n.t("simple_form.options.defaults.status.#{val.to_s}", default: val.to_s.humanize)
   end
 
   def statuses

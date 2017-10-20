@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def date date, format = "%B %d, %Y"
-    date.strftime(format)
+  def date date, format = :long
+    I18n.localize date, format: format
   end
 end

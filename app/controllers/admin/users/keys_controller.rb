@@ -5,6 +5,7 @@ class Admin::Users::KeysController < AdminController
 
   before_action :set_users_key, only: [:show, :edit, :update, :destroy]
   before_action :set_image, only: [:edit]
+  before_action :set_uploader, only: [:edit, :update]
 
   # GET /users/keys
   def index

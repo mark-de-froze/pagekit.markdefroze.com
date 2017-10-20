@@ -15,8 +15,11 @@ class AdminController < ApplicationController
     @menu_main = Menu.main
     @menu_sub = Menu.sub(section)
 
-    @title = controller.split('/').last.titleize
-    @title_section = section.split('/').last.titleize
+    #@title = controller.split('/').last.titleize
+    #@title_section = section.split('/').last.titleize
+
+    @title = I18n.t controller.split('/').join('.')+'.index.title'
+    @title_section = I18n.t section.split('/').join('.')+'.index.title'
     @controller = params[:controller]
   end
 

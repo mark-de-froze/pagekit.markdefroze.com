@@ -1,0 +1,48 @@
+<legend class="uk-legend">
+  <%= t('.title', default: 'Categories list')%>
+  <%= render 'layouts/admin/form/search' %>
+  <div class="uk-align-right">
+    <%= link_to t(:new), new_shop_category_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</legend>
+
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+  <thead>
+  <tr>
+    <th class="uk-width-small"><%= t('simple_form.labels.defaults.client', default: 'Client')%></th>
+    <th class="uk-table-expand"><%= t('simple_form.labels.defaults.title', default: 'Title')%></th>
+    <th><%= t('simple_form.labels.defaults.slug', default: 'URL')%></th>
+    <th class="uk-table-auto"><%= t('simple_form.labels.defaults.image', default: 'Image')%></th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @shop_categories.each do |shop_category| %>
+  <tr>
+    <td><%= link_to shop_category.client.site, api_v1_shop_category_path(shop_category.id, api_key: shop_category.api_key) %></td>
+    <td><%= shop_category.title %></td>
+    <td><%= link_to shop_category.slug, shop_category %></td>
+    <td><%= image_tag(shop_category.image_url, style: 'height: 40px') if shop_category.image.present? %></td>
+    <td class="uk-table-shrink"><%= link_to t(:edit), edit_shop_category_path(shop_category) %></td>
+    <td class="uk-table-shrink"><%= link_to t(:destroy), shop_category, method: :delete, data: { confirm: t(:confirm) } %></td>
+  </tr>
+  <% shop_category.subcategories.each do |shop_subcategory| %>
+      <tr>
+        <td></td>
+        <td>--- <%= shop_subcategory.title %></td>
+        <td><%= link_to shop_subcategory.slug, shop_subcategory %></td>
+        <td><%= image_tag(shop_subcategory.image_url, style: 'height: 40px') if shop_subcategory.image.present? %></td>
+        <td class="uk-table-shrink"><%= link_to t(:edit), edit_shop_category_path(shop_subcategory) %></td>
+        <td class="uk-table-shrink"><%= link_to t(:destroy), shop_subcategory, method: :delete, data: { confirm: t(:confirm) } %></td>
+      </tr>
+  <% end %>
+  <% end %>
+  <% if @shop_categories.empty? %>
+  <tr>
+    <td colspan="6"><h3 class="uk-text-muted uk-text-center"><%= t('.no_found', default: :no_found)%></h3></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @shop_categories, views_prefix: 'layouts/admin' %>

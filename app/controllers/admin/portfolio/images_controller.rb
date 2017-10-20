@@ -8,6 +8,11 @@ class Admin::Portfolio::ImagesController < AdminController
   before_action :set_projects, only: [:new, :create, :edit, :update]
   before_action :set_image, only: [:edit]
 
+  def render(*args)
+    set_image if @_action_name == 'new'
+    super
+  end
+
   # GET /admin/portfolio/images
   def index
     @search = params[:search].to_s.html_safe
@@ -25,7 +30,6 @@ class Admin::Portfolio::ImagesController < AdminController
   # GET /admin/portfolio/images/new
   def new
     @portfolio_image = Portfolio::Image.new(portfolio_image_params)
-    set_image
   end
 
   # GET /admin/portfolio/images/1/edit

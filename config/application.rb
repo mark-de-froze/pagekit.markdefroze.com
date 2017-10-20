@@ -15,6 +15,8 @@ module PagekitMarkdefrozeCom
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    I18n.available_locales = [:en, :ru]
+
     config.i18n.load_path += Dir[Rails.root.join('app', 'locales', '**', '*.{rb,yml}')]
 
     config.middleware.insert_before 0, Rack::Cors do

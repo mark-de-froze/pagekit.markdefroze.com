@@ -14,4 +14,6 @@ class Blog::Comment < ApplicationRecord
   belongs_to :post, :class_name => 'Blog::Post', :foreign_key => 'blog_post_id'
 
   gravtastic :from_email, default: 'mm'
+
+  resourcify
 end

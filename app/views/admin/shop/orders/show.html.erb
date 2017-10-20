@@ -1,0 +1,79 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-header">
+    <h3 class="uk-card-title"><%= t('.title') %></h3>
+  </div>
+  <div class="uk-card-body">
+
+    <div class="uk-inline uk-width-1-1 uk-height-small">
+      <progress class="uk-position-bottom uk-progress" title="<%=@shop_order.status_text%>"  value="<%=@shop_order.statuses.index(@shop_order.status.to_sym)%>" max="<%=@shop_order.statuses.size%>"></progress>
+
+      <div class="uk-position-bottom" style="bottom: 15px; right: 35px;">
+        <div class="uk-width-1-1 uk-child-width-expand" uk-grid uk-height-match="target: > div > p">
+          <% @shop_order.statuses.each do |status| %>
+              <div>
+                <p><%=@shop_order.status_text(status)%></p>
+                <div><span class="uk-badge"></span></div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <table class="uk-table uk-table-divider">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th><%= t('simple_form.labels.defaults.product', default: 'Product Name')%></th>
+        <th><%= t('simple_form.labels.defaults.quantity', default: 'Quantity')%></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% n = 0; @shop_order.details.each do |shop_detail| n = n+1 %>
+          <tr>
+            <td><%=n%></td>
+            <td><%=shop_detail.product.to_label%></td>
+            <td><%=shop_detail.quantity%> <%= t(:unit)%></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <dl class="uk-description-list uk-description-list-divider">
+      <dt><%= t('simple_form.labels.defaults.client', default: 'Client')%></dt>
+      <dd><%= @shop_order.client.site %></dd>
+      <dt><%= t('simple_form.labels.defaults.status', default: 'Status')%></dt>
+      <dd><%= @shop_order.status_text %></dd>
+      <dt><%= t('simple_form.labels.defaults.amount', default: 'Amount')%></dt>
+      <dd><%= number_to_currency(@shop_order.amount) %> <%= @shop_order.coupon %></dd>
+
+      <dt><%= t('simple_form.labels.defaults.tracking_number', default: 'Tracking number')%></dt>
+      <dd><%= @shop_order.tracking_number %></dd>
+
+      <dt><%= t('simple_form.labels.defaults.created_at', default: 'Created at')%></dt>
+      <dd><%= date(@shop_order.created_at, "%d %B, %Y %H:%M") %></dd>
+
+      <dt><%= t('simple_form.labels.defaults.updated_at', default: 'Updated at')%></dt>
+      <dd><%= date(@shop_order.updated_at, "%d %B, %Y %H:%M") %></dd>
+
+      <dt><%= t('simple_form.labels.defaults.shipped_at', default: 'Shipped at')%></dt>
+      <dd><%= date(@shop_order.shipped_at, "%d %B, %Y %H:%M") %></dd>
+
+      <dt><%= t('simple_form.labels.defaults.delivered_at', default: 'Delivered at')%></dt>
+      <dd><%= date(@shop_order.delivered_at, "%d %B, %Y %H:%M") %></dd>
+
+      <dt><%= t('simple_form.labels.defaults.paymented_at', default: 'Paymented at')%></dt>
+      <dd><%= date(@shop_order.paymented_at, "%d %B, %Y %H:%M") %></dd>
+
+      <dt><%= t('simple_form.labels.defaults.from', default: 'From')%></dt>
+      <dd><%= @shop_order.from %> <<%= @shop_order.from_phone %>></dd>
+      <dt><%= t('simple_form.labels.defaults.address', default: 'Address')%></dt>
+      <dd><%= @shop_order.delivery_zipcode %>, <%= @shop_order.delivery_address %></dd>
+      <dt><%= t('simple_form.labels.defaults.note', default: 'Note')%></dt>
+      <dd><%= @shop_order.note %></dd>
+    </dl>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_shop_order_path(@shop_order), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), shop_orders_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>

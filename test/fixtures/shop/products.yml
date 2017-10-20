@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  api_key: MyString
+  title: MyString
+  slug: MyString
+  content: MyText
+  status: 1
+  image: MyString
+  shop_category: one
+  product_price: 9.99
+  delivery_price: 1
+  sku: MyString
+  weigth: 9.99
+  location: MyString
+  delivery: 1
+  in_stock: 1
+  note: MyText
+  metatitle: MyString
+  metakeywords: MyText
+  metadescription: MyText
+
+two:
+  api_key: MyString
+  title: MyString
+  slug: MyString
+  content: MyText
+  status: 1
+  image: MyString
+  shop_category: two
+  product_price: 9.99
+  delivery_price: 1
+  sku: MyString
+  weigth: 9.99
+  location: MyString
+  delivery: 1
+  in_stock: 1
+  note: MyText
+  metatitle: MyString
+  metakeywords: MyText
+  metadescription: MyText

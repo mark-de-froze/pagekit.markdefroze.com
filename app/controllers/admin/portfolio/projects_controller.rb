@@ -1,9 +1,16 @@
 class Admin::Portfolio::ProjectsController < AdminController
+  include Uploader
+
   authorize_resource param_method: :portfolio_project_params, class: 'Portfolio::Project'
 
   before_action :set_portfolio_project, only: [:show, :edit, :update, :destroy]
   before_action :set_uploader, only: [:new, :create, :edit, :update]
   before_action :set_image, only: [:edit]
+
+  def render(*args)
+    set_image if @_action_name == 'new'
+    super
+  end
 
   # GET /admin/portfolio/projects
   def index
@@ -61,13 +68,8 @@ class Admin::Portfolio::ProjectsController < AdminController
       @portfolio_project = Portfolio::Project.unscoped.friendly.api(@api_keys_array).find(params[:id])
     end
 
-    def set_uploader
-      @uploader = Site::File.new.name
-      @uploader.success_action_redirect = new_site_file_url(redirect: request.path)
-    end
-
     def set_image
-      @portfolio_project.image = @uploader.direct_fog_url+params[:key] if params[:key].present?
+      @portfolio_project.image = image_url
     end
 
     # Only allow a trusted parameter "white list" through.

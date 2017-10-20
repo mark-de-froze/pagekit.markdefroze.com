@@ -1,0 +1,47 @@
+<legend class="uk-legend">
+  <%= t('.title', default: 'Orders list')%>
+  <div class="uk-align-right">
+    <%= link_to t(:new), new_shop_order_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</legend>
+
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+  <thead>
+  <tr>
+    <th><%= t('simple_form.labels.defaults.client', default: 'Client')%></th>
+    <th><%= t('simple_form.labels.defaults.status', default: 'Status')%></th>
+    <th><%= t('simple_form.labels.defaults.amount', default: 'Amount')%></th>
+    <th><%= t('simple_form.labels.defaults.date', default: 'Date')%></th>
+    <th><%= t('simple_form.labels.defaults.from', default: 'From')%></th>
+    <th><%= t('simple_form.labels.defaults.delivery', default: 'Delivery')%></th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @shop_orders.each do |shop_order| %>
+  <tr>
+    <td><%= link_to shop_order.client.site, api_v1_shop_order_path(shop_order.id, api_key: shop_order.api_key) %></td>
+    <td><%= link_to shop_order.status_text, shop_orders_path(search: shop_order.status) %></td>
+    <td>
+      <%= number_to_currency(shop_order.amount) %>
+      <% if shop_order.coupon.present? %>
+        <%=t(:coupon)%>: <%= shop_order.coupon %>
+      <% end %>
+    </td>
+    <td><%= shop_order.create_date %></td>
+    <td><%= shop_order.from %></td>
+    <td><%= shop_order.delivery_zipcode %>, <%= shop_order.delivery_address %></td>
+    <td class="uk-table-shrink"><%= link_to t(:show), shop_order %></td>
+    <td class="uk-table-shrink"><%= link_to t(:edit), edit_shop_order_path(shop_order) %></td>
+    <td class="uk-table-shrink"><%= link_to t(:destroy), shop_order, method: :delete, data: { confirm: t(:confirm) } %></td>
+  </tr>
+  <% end %>
+  <% if @shop_orders.empty? %>
+  <tr>
+    <td colspan="17"><h3 class="uk-text-muted uk-text-center"><%= t('.no_found', default: :no_found)%></h3></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%#= paginate @shop_orders, views_prefix: 'layouts/admin' %>

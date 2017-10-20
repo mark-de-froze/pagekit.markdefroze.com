@@ -35,6 +35,14 @@ Rails.application.routes.draw do
         resources :categories
         resources :articles
       end
+
+      namespace :shop do
+        get '/', to: 'products#index'
+        resources :products
+        resources :categories
+        resources :orders
+        resources :details
+      end
     end
   end
 
@@ -60,6 +68,12 @@ Rails.application.routes.draw do
       namespace :blog do
         resources :posts
         resources :comments
+      end
+
+      namespace :shop do
+        resources :products
+        resources :categories
+        resources :orders
       end
     end
   end

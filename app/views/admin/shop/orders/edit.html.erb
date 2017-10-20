@@ -1,0 +1,13 @@
+<% content_for :links do %>
+    <%= link_to t(:back), shop_orders_path, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:show), @shop_order, class: 'uk-button uk-button-default' %>
+    <%= link_to t(:destroy), @shop_order, method: :delete, class: 'uk-button uk-button-danger', data: { confirm: t(:confirm) } %>
+
+
+    <%= link_to t(:add_detail), new_shop_detail_path(shop_detail: {
+        shop_order_id: @shop_order.id,
+        api_key: @shop_order.api_key,
+    }), class: 'uk-button uk-button-primary' %>
+<% end %>
+
+<%= render 'form', shop_order: @shop_order %>

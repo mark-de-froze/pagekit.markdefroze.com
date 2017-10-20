@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018081624) do
+ActiveRecord::Schema.define(version: 20171019182206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,72 @@ ActiveRecord::Schema.define(version: 20171018081624) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "shop_categories", force: :cascade do |t|
+    t.string "api_key"
+    t.string "title"
+    t.string "slug"
+    t.text "content"
+    t.bigint "parent_id"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_shop_categories_on_parent_id"
+  end
+
+  create_table "shop_details", force: :cascade do |t|
+    t.string "api_key"
+    t.bigint "shop_order_id"
+    t.bigint "shop_product_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_order_id"], name: "index_shop_details_on_shop_order_id"
+    t.index ["shop_product_id"], name: "index_shop_details_on_shop_product_id"
+  end
+
+  create_table "shop_orders", force: :cascade do |t|
+    t.string "api_key"
+    t.integer "status"
+    t.decimal "amount"
+    t.string "coupon"
+    t.string "tracking_number"
+    t.datetime "shipped_at"
+    t.datetime "delivered_at"
+    t.datetime "paymented_at"
+    t.string "from_email"
+    t.string "from_name"
+    t.string "from_phone"
+    t.string "delivery_address"
+    t.string "delivery_zipcode"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shop_products", force: :cascade do |t|
+    t.string "api_key"
+    t.string "title"
+    t.string "slug"
+    t.text "content"
+    t.integer "status"
+    t.string "image"
+    t.bigint "shop_category_id"
+    t.decimal "product_price", precision: 10, scale: 2
+    t.decimal "delivery_price", precision: 10, scale: 2
+    t.string "sku"
+    t.decimal "weigth", precision: 10, scale: 2
+    t.string "location"
+    t.integer "delivery"
+    t.integer "in_stock"
+    t.text "note"
+    t.string "metatitle"
+    t.text "metakeywords"
+    t.text "metadescription"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_category_id"], name: "index_shop_products_on_shop_category_id"
+  end
+
   create_table "site_files", force: :cascade do |t|
     t.string "api_key"
     t.string "name"
@@ -214,6 +280,7 @@ ActiveRecord::Schema.define(version: 20171018081624) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "locale"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -232,4 +299,7 @@ ActiveRecord::Schema.define(version: 20171018081624) do
   add_foreign_key "portfolio_feedbacks", "portfolio_projects"
   add_foreign_key "portfolio_images", "portfolio_projects"
   add_foreign_key "portfolio_projects", "portfolio_categories"
+  add_foreign_key "shop_details", "shop_orders"
+  add_foreign_key "shop_details", "shop_products"
+  add_foreign_key "shop_products", "shop_categories"
 end

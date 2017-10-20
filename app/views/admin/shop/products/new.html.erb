@@ -1,0 +1,6 @@
+<% content_for :links do %>
+    <%= link_to t(:back), shop_products_path, class: 'uk-button uk-button-default' %>
+<% end %>
+
+<%= render 'form', shop_product: @shop_product %>
+

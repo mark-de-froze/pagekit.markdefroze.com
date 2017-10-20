@@ -19,7 +19,7 @@ class Blog::Post < ApplicationRecord
   resourcify
 
   def publish_date
-    published_at.strftime("%B %d, %Y")
+    published_at.strftime("%d %B, %Y")
   end
 
   def to_label

@@ -9,6 +9,7 @@
   <%= f.error_notification %>
 
   <%= f.input :email %>
+  <%= f.input :locale, collection: I18n.available_locales, prompt: :translate %>
   <%= f.input :password, autocomplete: "off" %>
   <%= f.input :password_confirmation %>
 

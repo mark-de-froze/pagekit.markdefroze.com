@@ -1,4 +1,6 @@
 class Admin::Portfolio::CategoriesController < AdminController
+  include Uploader
+
   authorize_resource param_method: :portfolio_category_params, class: 'Portfolio::Category'
 
   before_action :set_portfolio_category, only: [:show, :edit, :update, :destroy]
@@ -6,6 +8,11 @@ class Admin::Portfolio::CategoriesController < AdminController
   before_action :set_parental_except_id, only: [:edit, :update]
   before_action :set_uploader, only: [:new, :create, :edit, :update]
   before_action :set_image, only: [:edit]
+
+  def render(*args)
+    set_image if @_action_name == 'new'
+    super
+  end
 
   # GET /admin/portfolio/categories
   def index
@@ -26,7 +33,6 @@ class Admin::Portfolio::CategoriesController < AdminController
   # GET /admin/portfolio/categories/new
   def new
     @portfolio_category = Portfolio::Category.new
-    set_image
   end
 
   # GET /admin/portfolio/categories/1/edit
@@ -65,13 +71,8 @@ class Admin::Portfolio::CategoriesController < AdminController
       @portfolio_category = Portfolio::Category.unscoped.friendly.api(@api_keys_array).find(params[:id])
     end
 
-    def set_uploader
-      @uploader = Site::File.new.name
-      @uploader.success_action_redirect = new_site_file_url(redirect: request.path)
-    end
-
     def set_image
-      @portfolio_category.image = @uploader.direct_fog_url+params[:key] if params[:key].present?
+      @portfolio_category.image = image_url
     end
 
     def set_parental

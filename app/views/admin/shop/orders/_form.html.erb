@@ -1,0 +1,100 @@
+<%= simple_form_for @shop_order, html: {class: 'uk-form-stacked'}, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.'+action_name+'.title', default: action_name.titleize + ' Order')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <div>
+    <ul class="uk-width-1-1" uk-tab>
+      <li><a href="#"><%=t(:info)%></a></li>
+      <% if @shop_order.details.size > 0 %>
+        <li><a href="#"><%=t(:details)%></a></li>
+      <% end %>
+    </ul>
+    <ul class="uk-switcher uk-margin">
+      <li>
+        <div uk-grid>
+          <div class="uk-width-1-3">
+            <%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}  %>
+          </div>
+          <div class="uk-width-1-4">
+            <%= f.input :status, collection: @shop_order.statuses, prompt: :translate, input_html: {class: 'uk-select'} %>
+          </div>
+        </div>
+
+        <div uk-grid>
+          <div class="uk-width-1-3">
+            <%= f.input :from_email %>
+          </div>
+          <div class="uk-width-1-3">
+            <%= f.input :from_name %>
+          </div>
+          <div class="uk-width-1-3">
+            <%= f.input :from_phone %>
+          </div>
+        </div>
+
+        <div uk-grid>
+          <div class="uk-width-1-4">
+            <%= f.input :amount %>
+          </div>
+          <div class="uk-width-1-4">
+            <%= f.input :coupon %>
+          </div>
+          <div class="uk-width-1-2">
+            <%= f.input :paymented_at %>
+          </div>
+        </div>
+
+        <div uk-grid>
+          <div class="uk-width-1-6">
+            <%= f.input :delivery_zipcode %>
+          </div>
+          <div class="uk-width-expand">
+            <%= f.input :delivery_address %>
+          </div>
+          <div class="uk-width-1-2">
+            <%= f.input :delivered_at %>
+          </div>
+        </div>
+
+        <div uk-grid>
+          <div class="uk-width-1-2">
+            <%= f.input :tracking_number %>
+          </div>
+          <div class="uk-width-1-2">
+            <%= f.input :shipped_at %>
+          </div>
+        </div>
+
+        <%= f.input :note %>
+      </li>
+      <li>
+        <% @shop_order.details.each do |shop_detail|%>
+            <%= f.simple_fields_for :details, shop_detail do |detailf| %>
+              <div uk-grid>
+                <div class="uk-width-expand">
+                  <%= detailf.association :product, prompt: :translate, input_html: {class: 'uk-select'} %>
+                </div>
+                <div class="uk-width-1-6">
+                  <%= detailf.input :quantity, input_html: {min: 1, step: 1} %>
+                </div>
+                <div class="uk-width-auto">
+                  <div class="uk-margin-top">
+                    <%=t(:destroy)%>: <%= detailf.check_box :_destroy, class: 'uk-checkbox' %>
+                  </div>
+                </div>
+              </div>
+              <%= detailf.hidden_field :id, value: shop_detail.id %>
+              <hr>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+<% end %>
+

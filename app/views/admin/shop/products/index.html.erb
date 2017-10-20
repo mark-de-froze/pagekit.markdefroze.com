@@ -1,0 +1,47 @@
+<legend class="uk-legend">
+  <%= t('.title', default: 'Products list')%>
+  <%= render 'layouts/admin/form/search' %>
+  <div class="uk-align-right">
+    <%= link_to t(:new), new_shop_product_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</legend>
+
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+  <thead>
+  <tr>
+    <th colspan="uk-width-small"><%= t('simple_form.labels.defaults.client', default: 'Api key')%></th>
+    <th class="uk-table-expand" colspan="2"><%= t('simple_form.labels.defaults.title', default: 'Title')%></th>
+    <th><%= t('simple_form.labels.defaults.slug', default: 'Slug')%></th>
+    <th><%= t('simple_form.labels.defaults.status', default: 'Status')%></th>
+    <th><%= t('simple_form.labels.defaults.price', default: 'Price')%></th>
+    <th class="uk-table-auto"><%= t('simple_form.labels.defaults.quantity', default: 'Quantity')%></th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @shop_products.each do |shop_product| %>
+  <tr>
+    <td><%= link_to shop_product.client.site, api_v1_shop_product_path(shop_product.id, api_key: shop_product.api_key) %></td>
+    <td><%= image_tag(shop_product.image_url, style: 'height: 100px') if shop_product.image.present? %></td>
+    <td>
+      <p><strong><%= t('simple_form.labels.defaults.sku')%>:</strong> <%= shop_product.sku %></p>
+      <p><strong><%= t('simple_form.labels.defaults.category')%>:</strong> <%= link_to shop_product.category.to_label, shop_product.category %></p>
+      <p><%= shop_product.title %></p>
+    </td>
+    <td><%= link_to shop_product.slug, shop_product %></td>
+    <td class="uk-text-center"><span title="<%= shop_product.status_text %>" class="uk-icon-circle-<%= shop_product.status %>"></span></td>
+    <td><%= number_to_currency(shop_product.product_price) %></td>
+    <td><%= shop_product.in_stock %> <%= t(:unit) %></td>
+    <td class="uk-table-shrink"><%= link_to t(:edit), edit_shop_product_path(shop_product) %></td>
+    <td class="uk-table-shrink"><%= link_to t(:destroy), shop_product, method: :delete, data: { confirm: t(:confirm) } %></td>
+  </tr>
+  <% end %>
+  <% if @shop_products.empty? %>
+  <tr>
+    <td colspan="9"><h3 class="uk-text-muted uk-text-center"><%= t('.no_found', default: :no_found)%></h3></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @shop_products, views_prefix: 'layouts/admin' %>

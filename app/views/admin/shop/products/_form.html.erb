@@ -1,0 +1,72 @@
+<%= render 'layouts/admin/form/uploader' %>
+<%= simple_form_for @shop_product, html: {class: 'uk-form-stacked'}, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.'+action_name+'.title', default: action_name.titleize + ' Product')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <div>
+    <ul class="uk-width-1-1" uk-tab>
+      <li><a href="#"><%=t(:content)%></a></li>
+      <li><a href="#"><%=t(:info)%></a></li>
+      <li><a href="#"><%=t(:meta)%></a></li>
+    </ul>
+    <ul class="uk-switcher uk-margin">
+      <li>
+        <div uk-grid>
+          <div class="uk-width-3-4">
+            <%= f.input :title %>
+            <%= f.input :content %>
+            <%= f.input :note %>
+          </div>
+          <div class="uk-width-1-4">
+            <%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}  %>
+            <%= f.input :slug if @shop_product.slug.present? %>
+            <%= f.association :category, prompt: :translate, input_html: {class: 'uk-select'} %>
+            <%= f.input :status, collection: @shop_product.statuses, prompt: :translate, input_html: {class: 'uk-select'} %>
+            <%=image_tag @shop_product.image_url %>
+            <%= f.input :image, as: :image_preview  %>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div uk-grid>
+          <div class="uk-width-large">
+            <%= f.input :sku %>
+          </div>
+          <div class="uk-width-expand">
+            <%= f.input :in_stock, input_html: {min: 0, step: 1} %>
+          </div>
+          <div class="uk-width-expand">
+            <%= f.input :weigth, input_html: {min: 1, step: 0.1} %>
+          </div>
+          <div class="uk-width-1-4">
+            <%= f.input :product_price, input_html: {min: 1, step: 0.1} %>
+          </div>
+        </div>
+
+        <div uk-grid>
+          <div class="uk-width-large">
+            <%= f.input :location %>
+          </div>
+          <div class="uk-width-expand">
+            <%= f.input :delivery, collection: @shop_product.deliveries, prompt: :translate, input_html: {class: 'uk-select'} %>
+          </div>
+          <div class="uk-width-1-4">
+            <%= f.input :delivery_price, input_html: {min: 0, step: 0.1} %>
+          </div>
+        </div>
+      </li>
+      <li>
+        <%= f.input :metatitle %>
+        <%= f.input :metakeywords %>
+        <%= f.input :metadescription %>
+      </li>
+    </ul>
+  </div>
+<% end %>
+

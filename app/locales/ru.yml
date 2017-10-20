@@ -1,0 +1,327 @@
+ru:
+  hello: "Привет мир"
+  new: "Добавить"
+  show: "Подробнее"
+  edit: "Редактировать"
+  destroy: "Удалить"
+  upload: "Загрузить"
+  confirm: "Вы уверены?"
+  back: "Назад"
+  no_found: "Не найдено"
+  written_by: "Написано"
+  ago: "тому назад"
+  to: "Для"
+  from: "Из"
+  "on": "на"
+  all: "Все"
+  posted_in: "Опубликовано в"
+  positions: "Позиции"
+  login: "Вход"
+  logout: "Выход"
+  is_used: "%{size} из %{max} используется"
+  content: "Описание"
+  info: "Информация"
+  meta: "Доболнительная информация"
+  unit: "ед. изм."
+  order: "Заказ"
+  product: "Продук"
+
+  admin:
+    shop:
+      index:
+        title: "Магазин"
+      products:
+        index:
+          title: "Продукты"
+        form:
+          new:
+            title: "Добавить продукт"
+          edit:
+            title: "Редактирование продукта"
+      categories:
+        index:
+          title: "Категории"
+        form:
+          new:
+            title: "Добавть категория"
+          edit:
+            title: "Редактирование категории"
+      orders:
+        index:
+          title: "Заказы"
+        show:
+          title: "Статус заказа"
+        form:
+          new:
+            title: "Добавть заказ"
+          edit:
+            title: "Редактирование заказа"
+      details:
+        index:
+          title: "Корзина"
+        form:
+          new:
+            title: "Добавть в корзину"
+          edit:
+            title: "Редактирование корзины"
+    blog:
+      index:
+        title: "Блог"
+      posts:
+        index:
+          title: "Записи"
+        form:
+          new:
+            title: "Добавть запись"
+          edit:
+            title: "Редактирование записи"
+      comments:
+        index:
+          title: "Комментарии"
+        form:
+          show:
+            title: "Оставить комментарий"
+          new:
+            title: "Добавть комментарий"
+          edit:
+            title: "Редактирование комментария"
+
+    portfolio:
+      index:
+        title: "Портфолио"
+      projects:
+        index:
+          title: "Проекты"
+        form:
+          new:
+            title: "Добавть проект"
+          edit:
+            title: "Редактирование проекта"
+      images:
+        index:
+          title: "Изображения"
+        form:
+          new:
+            title: "Добавть изображение"
+          edit:
+            title: "Редактирование изображения"
+      categories:
+        index:
+          title: "Категории"
+        form:
+          new:
+            title: "Добавть категория"
+          edit:
+            title: "Редактирование категории"
+      feedbacks:
+        index:
+          title: "Отзывы"
+        form:
+          new:
+            title: "Добавть отзыв"
+          edit:
+            title: "Редактирование отзыва"
+      articles:
+        index:
+          title: "Статьи"
+        form:
+          new:
+            title: "Добавть статью"
+          edit:
+            title: "Редактирование статьи"
+    site:
+      index:
+        title: "Сайт"
+      pages:
+        index:
+          title: "Страницы"
+        form:
+          new:
+            title: "Добавть страницу"
+          edit:
+            title: "Редактирование страницы"
+      widgets:
+        index:
+          title: "Виджеты"
+        form:
+          new:
+            title: "Добавть виджет"
+          edit:
+            title: "Редактирование виждета"
+      links:
+        index:
+          title: "Ссылки"
+        form:
+          new:
+            title: "Добавть ссылку"
+          edit:
+            title: "Редактирование ссылки"
+      storage:
+        index:
+          title: "Файлы"
+        form:
+          new:
+            title: "Добавть файл"
+      mails:
+        index:
+          title: "Письма"
+        form:
+          new:
+            title: "Добавть письмо"
+          edit:
+            title: "Редактирование письма"
+      settings:
+        index:
+          title: "Настройки"
+        form:
+          new:
+            title: "Добавть настройку"
+          edit:
+            title: "Редактирование настройки"
+    users:
+      index:
+        title: "Пользователи"
+      accounts:
+        index:
+          title: "Пользователи"
+        form:
+          new:
+            title: "Добавть пользователя"
+          edit:
+            title: "Редактирование пользователя"
+      roles:
+        index:
+          title: "Роли"
+        form:
+          new:
+            title: "Добавть роль"
+          edit:
+            title: "Редактирование роли"
+      keys:
+        index:
+          title: "API ключи"
+        form:
+          new:
+            title: "Добавть API ключ"
+          edit:
+            title: "Редактирование API ключа"
+    dashboard:
+      index:
+        title: "Панель управления"
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    required:
+      text: 'обязательно'
+      mark: '*'
+    error_notification:
+      default_message: "Ознакомьтесь со следующими проблемами:"
+    placeholders:
+      defaults:
+        email: "Введите email"
+        password: "Введите пароль"
+        remember_me: "Запомнить тебя?"
+    labels:
+      defaults:
+        created_at: "Создано"
+        updated_at: "Обновлено"
+        email: "Email"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        roles: "Роли"
+        name: "Имя"
+        title: "Название"
+        subtitle: "Дополнительное название"
+        content: "Описание"
+        resource_type: "Тип ресурса"
+        resource: "Ресурс"
+        api_key: "API ключ"
+        site: "Сайт"
+        user: "Пользователь"
+        image: "Изображение"
+        images: "Изображения"
+        status: "Статус"
+        slug: "URL"
+        url: "URL"
+        client: "Клиент"
+        section: "Секция"
+        position: "Позиция"
+        is_visible_main: "Отобразить в главном меню"
+        is_visible_offcanvas: "Отобразить в дополнительном меню"
+        size: "Размер"
+        modified: "Обновлено"
+        from: "От"
+        from_name: "Имя"
+        from_email: "Email"
+        from_phone: "Телефон"
+        subject: "Тема"
+        category: "Категория"
+        published_at: "Опубликованный"
+        customer: "Заказчик"
+        feedback: "Отзыв"
+        order: "Заказ"
+        project: "Проект"
+        priority: "Приоритет"
+        parent: "Родительская категория"
+        tags: "Метки"
+        author: "Автор"
+        date: "Дата"
+        amount: "Сумма"
+        coupon: "Промокод"
+        note: "Заметка"
+        paymented_at: "Оплачен"
+        delivered_at: "Доставлено"
+        shipped_at: "Отправленно"
+        tracking_number: "Номер отслеживания"
+        delivery_zipcode: "Индекс"
+        delivery_address: "Адрес доставки"
+        address: "Адрес"
+        quantity: "Количество"
+        locale: "Язык"
+        key: "Ключ"
+        value: "Значение"
+        comment: "Комментарий"
+        blog_post: "Запись в блоге"
+        price: "Цена"
+        sku: "Код"
+        in_stock: "На складе"
+        weigth: "Вес"
+        product_price: "Цена"
+        location: "Место нахождения"
+        delivery: "Доставка"
+        delivery_price: "Цена доставки"
+        shop_product: "Продукт"
+        product: "Продукт"
+
+    options:
+      defaults:
+        status:
+          enabled: "Включено"
+          disabled: "Отключено"
+          read: "Прочитано"
+          unread: "Не прочитано"
+          published: "Опубликованный"
+          draft: "Черновик"
+          unpublished: "Неопубликованный"
+          accepted: "Принятый"
+          processed: "Обработанный"
+          pending: "Ожидаемый оплаты"
+          shipped: "Отправлен"
+          delivered: "Доставлен"
+          waiting: "Ожидает получения"
+          completed: "Завершенный"
+        delivery:
+          no_delivery: "Без доставки"
+          pickup: "Самовывоз из точки выдачи"
+          post: "Только почтой"
+          on_world: "По миру транспортной компанией по вашему выбору"
+          only_on_country: "Только по стране транспортной компанией по вашему выбору"
+          only_on_city: "Только по городу транспортной компанией по вашему выбору"
+          only_on_city_courier: "Только оп городу курьерской службой"
+        section:
+          contact: "Контакт"
+          app: "Приложение"
+  helpers:
+    submit:
+      create: 'Создать'
+      update: 'Обновить'

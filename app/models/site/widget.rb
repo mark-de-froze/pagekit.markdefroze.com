@@ -12,7 +12,7 @@ class Site::Widget < ApplicationRecord
 
   def position_text(val = nil)
      val = self.position if val.nil?
-    I18n.t("simple_form.options.site_widget.position.#{position.to_s}", default: val.to_s.humanize)
+    I18n.t("simple_form.options.defaults.position.#{val.to_s}", default: val.to_s.humanize)
   end
 
   def positions

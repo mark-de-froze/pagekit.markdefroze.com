@@ -1,0 +1,16 @@
+<%= simple_form_for @shop_detail, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.'+action_name+'.title', default: action_name.titleize + ' Detail')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}  %>
+  <%= f.association :order, collection: @orders, prompt: :translate, input_html: {class: 'uk-select'}  %>
+  <%= f.association :product, collection: @products, prompt: :translate, input_html: {class: 'uk-select'}  %>
+  <%= f.input :quantity, input_html: {min: 1, step: 1} %>
+<% end %>
+

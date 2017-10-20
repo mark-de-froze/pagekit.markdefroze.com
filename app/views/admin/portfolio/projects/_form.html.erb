@@ -29,7 +29,7 @@
           <div class="uk-width-1-4">
             <%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}  %>
             <%= f.input :slug if @portfolio_project.slug.present? %>
-            <%= f.association :category, prompt: :translate %>
+            <%= f.association :category, prompt: :translate, input_html: {class: 'uk-select'} %>
             <%= f.input :status, collection: @portfolio_project.statuses, prompt: :translate, input_html: {class: 'uk-select'} %>
             <%= f.input :priority, collection: @portfolio_project.priorities, prompt: :translate, input_html: {class: 'uk-select'} %>
             <%= f.input :customer %>

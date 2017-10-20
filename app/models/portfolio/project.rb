@@ -1,7 +1,6 @@
 class Portfolio::Project < ApplicationRecord
   include Keyable
   include Searchable
-  extend FriendlyId
   include Sluggable
   include Imageable
 

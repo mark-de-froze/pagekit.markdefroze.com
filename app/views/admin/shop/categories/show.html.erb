@@ -1,0 +1,22 @@
+<div class="uk-card uk-card-default">
+  <div class="uk-card-body">
+    <dl class="uk-description-list uk-description-list-divider">
+      <dt><%= t('simple_form.labels.defaults.api_key', default: 'Client')%></dt>
+      <dd><%= @shop_category.client.site %></dd>
+      <dt><%= t('simple_form.labels.defaults.title', default: 'Title')%></dt>
+      <dd><%= @shop_category.title %></dd>
+      <dt><%= t('simple_form.labels.defaults.slug', default: 'URL')%></dt>
+      <dd><%= @shop_category.slug %></dd>
+      <dt><%= t('simple_form.labels.defaults.content', default: 'Content')%></dt>
+      <dd><%= @shop_category.content %></dd>
+      <dt><%= t('simple_form.labels.defaults.parent', default: 'Parent')%></dt>
+      <dd><%= @shop_category.parent %></dd>
+      <dt><%= t('simple_form.labels.defaults.image', default: 'Image')%></dt>
+      <dd><%= image_tag(@shop_category.image_url, style: 'height: 40px') if @shop_category.image.present? %></dd>
+    </dl>
+  </div>
+  <div class="uk-card-footer">
+    <%= link_to t(:edit), edit_shop_category_path(@shop_category), class: 'uk-button uk-button-text' %> |
+    <%= link_to t(:back), shop_categories_path, class: 'uk-button uk-button-text' %>
+  </div>
+</div>
