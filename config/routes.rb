@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  scope module: :application do
+    scope module: :blog do
+      get '/posts', to: 'posts#index'
+      get '/posts/:id', to: 'posts#show'
+      #resources :posts
+    end
+  end
+
   scope '/admin' do
     scope module: :admin do
       get 'dashboard', to: 'dashboard#index'

@@ -14,6 +14,7 @@
       <li><a href="#"><%=t(:content)%></a></li>
       <li><a href="#"><%=t(:info)%></a></li>
       <li><a href="#"><%=t(:meta)%></a></li>
+      <li><a href="#"><%=t(:properties)%></a></li>
     </ul>
     <ul class="uk-switcher uk-margin">
       <li>
@@ -65,6 +66,27 @@
         <%= f.input :metatitle %>
         <%= f.input :metakeywords %>
         <%= f.input :metadescription %>
+      </li>
+      <li>
+        <%= f.simple_fields_for :properties do |propertyf| %>
+            <div uk-grid>
+              <div class="uk-width-1-6">
+                <br>
+                <%= propertyf.hidden_field :key, value: propertyf.object.key %>
+                <%= propertyf.object.key_text %>
+              </div>
+              <div class="uk-width-expand">
+                <%= propertyf.input :value %>
+              </div>
+              <div class="uk-width-auto">
+                <div class="uk-margin-top">
+                  <%=t(:destroy)%>: <%= propertyf.check_box :_destroy, class: 'uk-checkbox' %>
+                </div>
+              </div>
+            </div>
+            <%#= propertyf.hidden_field :id, value: shop_property.id %>
+            <hr>
+        <% end %>
       </li>
     </ul>
   </div>

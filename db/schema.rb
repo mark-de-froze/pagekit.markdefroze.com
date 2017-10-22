@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019182206) do
+ActiveRecord::Schema.define(version: 20171022075747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,6 +201,13 @@ ActiveRecord::Schema.define(version: 20171019182206) do
     t.index ["shop_category_id"], name: "index_shop_products_on_shop_category_id"
   end
 
+  create_table "shop_properties", force: :cascade do |t|
+    t.bigint "shop_product_id"
+    t.integer "key"
+    t.string "value"
+    t.index ["shop_product_id"], name: "index_shop_properties_on_shop_product_id"
+  end
+
   create_table "site_files", force: :cascade do |t|
     t.string "api_key"
     t.string "name"
@@ -302,4 +309,5 @@ ActiveRecord::Schema.define(version: 20171019182206) do
   add_foreign_key "shop_details", "shop_orders"
   add_foreign_key "shop_details", "shop_products"
   add_foreign_key "shop_products", "shop_categories"
+  add_foreign_key "shop_properties", "shop_products"
 end

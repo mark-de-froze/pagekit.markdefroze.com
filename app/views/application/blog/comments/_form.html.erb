@@ -1,0 +1,28 @@
+<%= simple_form_for @blog_comment, html: {class: 'uk-form-stacked'}, wrapper: :form do |f| %>
+  <legend class="uk-legend">
+    <%= t('.'+action_name+'.title', default: action_name.titleize + ' Comment')%>
+    <div class="uk-align-right">
+      <%= yield :links %>
+      <%= f.button :submit, class: 'uk-button uk-button-primary' %>
+    </div>
+  </legend>
+  <%= f.error_notification %>
+
+  <div class="uk-width-1-1" uk-grid>
+      <div class="uk-width-expand"><%= f.input :from_name %></div>
+      <div class="uk-width-expand"> <%= f.input :from_email %></div>
+      <% unless @blog_post %>
+      <div class="uk-width-large"><%= f.input :api_key, collection: @api_keys, value_method: :api_key, prompt: :translate, input_html: {class: 'uk-select'}  %></div>
+      <div class="uk-width-1-5"><%= f.input :status, collection: @blog_comment.statuses, prompt: :translate, input_html: {class: 'uk-select'} %></div>
+      <% end %>
+  </div>
+  <% unless @blog_post %>
+  <%= f.association :post, prompt: :translate, collection: @posts, input_html: {class: 'uk-select'} %>
+  <% else %>
+    <%= f.hidden_field :api_key %>
+    <%= f.hidden_field :status %>
+    <%= f.hidden_field :blog_post_id %>
+  <% end %>
+  <%= f.input :comment %>
+<% end %>
+

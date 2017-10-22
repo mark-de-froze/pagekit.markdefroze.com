@@ -3,8 +3,14 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
+  before_action :set_api_key
+
   private
     def set_locale
       I18n.locale = current_user.locale.to_sym if current_user.locale.present?
+    end
+
+    def set_api_key
+      @pagekit_api_key = ENV.fetch('API_KEY')
     end
 end

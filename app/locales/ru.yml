@@ -25,6 +25,7 @@ ru:
   unit: "ед. изм."
   order: "Заказ"
   product: "Продук"
+  properties: "Свойства"
 
   admin:
     shop:
@@ -321,6 +322,11 @@ ru:
         section:
           contact: "Контакт"
           app: "Приложение"
+        key:
+          composition: "Состав продукта"
+          weight: "Вес упаковки"
+          form: "Нарезка"
+          expiry_date: "Срок реализации"
   helpers:
     submit:
       create: 'Создать'

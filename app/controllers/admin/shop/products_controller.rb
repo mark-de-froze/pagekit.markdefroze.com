@@ -30,6 +30,9 @@ class Admin::Shop::ProductsController < AdminController
   # GET /shop/products/new
   def new
     @shop_product = Shop::Product.new
+    Shop::Property.keys.each do |key|
+      @shop_product.properties.build(key: key[1])
+    end
   end
 
   # GET /shop/products/1/edit
@@ -74,6 +77,6 @@ class Admin::Shop::ProductsController < AdminController
 
     # Only allow a trusted parameter "white list" through.
     def shop_product_params
-      params.require(:shop_product).permit(:api_key, :title, :slug, :content, :status, :image, :shop_category_id, :product_price, :delivery_price, :sku, :weigth, :location, :delivery, :in_stock, :note, :metatitle, :metakeywords, :metadescription)
+      params.require(:shop_product).permit(:api_key, :title, :slug, :content, :status, :image, :shop_category_id, :product_price, :delivery_price, :sku, :weigth, :location, :delivery, :in_stock, :note, :metatitle, :metakeywords, :metadescription, properties_attributes: [ :id, :shop_product_id, :key, :value, :_destroy])
     end
 end

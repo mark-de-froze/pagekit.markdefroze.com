@@ -1,0 +1,27 @@
+<% @blog_posts.each do |blog_post| %>
+  <article class="uk-article">
+
+    <h1 class="uk-article-title"><%= link_to blog_post.title, blog_post, class: 'uk-link-reset' %></h1>
+
+    <p class="uk-article-meta">
+      <%=t(:written_by)%> <%= link_to_if (current_user.has_role? :manager_users), blog_post.user.to_label, users_account_path(blog_post.user) %>
+      <%=t(:on)%> <%=date(blog_post.published_at)%>.
+      <%= t(:posted_in) %> <%=blog_post.client.site%>
+    </p>
+    <p><%= blog_post.content %></p>
+
+    <div class="uk-grid-small uk-child-width-auto" uk-grid>
+      <div>
+        <%= link_to t(:read_more), "/posts/#{blog_post.slug}", class: 'uk-button uk-button-text' %>
+      </div>
+      <div>
+        <%= link_to t(:comments), "/posts/#{blog_post.slug}#comments", class: 'uk-button uk-button-text' %>
+      </div>
+    </div>
+  </article>
+<% end %>
+<% if @blog_posts.empty? %>
+    <%= t('.no_found', default: :no_found)%>
+<% end %>
+
+<%= paginate @blog_posts, views_prefix: 'layouts/admin' %>

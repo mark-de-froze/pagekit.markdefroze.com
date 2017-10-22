@@ -25,6 +25,7 @@ en:
   unit: "unit"
   order: "Order"
   product: "Product"
+  properties: "Properties"
 
   admin:
     shop:
@@ -156,7 +157,7 @@ en:
             title: "New Link"
           edit:
             title: "Editing Link"
-      files:
+      storage:
         index:
           title: "Files"
         form:
@@ -322,6 +323,11 @@ en:
         section:
           contact: "Contact"
           app: "App"
+        key:
+          composition: "Composition"
+          weight: "Weight"
+          form: "Form"
+          expiry_date: "Expiry date"
   helpers:
     submit:
       create: 'Create %{model}'

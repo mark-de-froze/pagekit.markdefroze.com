@@ -33,6 +33,11 @@
       <dd><%= @shop_product.in_stock %> <%= t(:unit) %></dd>
       <dt><%= t('simple_form.labels.defaults.note', default: 'Note')%></dt>
       <dd><%= @shop_product.note %></dd>
+
+      <% @shop_product.properties.each do |property| %>
+      <dt><%=property.key_text%></dt>
+      <dd><%=property.value%></dd>
+      <% end %>
     </dl>
     </div>
     <div class="uk-card-footer">
