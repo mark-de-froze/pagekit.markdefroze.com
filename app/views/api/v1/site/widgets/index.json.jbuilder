@@ -4,6 +4,7 @@
       if widget.position == position.slice(0)
         json.set! widget.section do
           json.extract! widget, :id, :title, :subtitle, :content, :section, :created_at, :updated_at
+          json.content widget.content.gsub(/{{widget.title}}/,widget.title).gsub(/{{widget.subtitle}}/,widget.subtitle)
         end
       end
     end

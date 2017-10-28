@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
 
   private
     def set_locale
-      I18n.locale = current_user.locale.to_sym if current_user.locale.present?
+      if current_user.present?
+        I18n.locale = current_user.locale.to_sym if current_user.locale.present?
+      end
     end
 
     def set_api_key

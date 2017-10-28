@@ -69,7 +69,7 @@ class Admin::Portfolio::ProjectsController < AdminController
     end
 
     def set_image
-      @portfolio_project.image = image_url
+      @portfolio_project.image = image_url if params[:key]
     end
 
     # Only allow a trusted parameter "white list" through.
