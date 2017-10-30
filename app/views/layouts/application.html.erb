@@ -16,23 +16,27 @@
     <div id="navbar">
       <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
         <nav class="uk-navbar-container uk-container" uk-navbar>
+          <div class="uk-navbar-left">
+            <a class="uk-logo" href="#">Pagekit by Mark de Froze</a>
+          </div>
           <div class="uk-navbar-right">
-
             <ul class="uk-navbar-nav">
-              <li class="uk-active"><a href="#">Home</a></li>
-              <li><a href="#">Blog</a></li>
+              <li class="uk-active"><a href="/">Home</a></li>
+              <li><a href="/blog">Blog</a></li>
               <li><a href="#">About</a></li>
             </ul>
-
+            <a href="<%=new_user_session_path%>" class="uk-button uk-button-primary">Sign In</a>
           </div>
         </nav>
       </div>
     </div>
-    <div id="main">
+    <div id="main" uk-height-viewport="expand: true">
       <div class="uk-container uk-margin-large-top">
         <%= yield %>
       </div>
     </div>
-    <div id="footer"></div>
+    <div id="footer">
+      <div class="uk-text-center">Made with love by <a href="http://markdefroze.com">Mark de Froze</a></div>
+    </div>
   </body>
 </html>

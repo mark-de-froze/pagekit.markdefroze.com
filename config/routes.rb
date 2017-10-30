@@ -2,9 +2,8 @@ Rails.application.routes.draw do
 
   scope module: :application do
     scope module: :blog do
-      get '/posts', to: 'posts#index'
-      get '/posts/:id', to: 'posts#show'
-      #resources :posts
+      get '/blog', to: 'posts#index'
+      get '/blog/:id', to: 'posts#show'
     end
   end
 
