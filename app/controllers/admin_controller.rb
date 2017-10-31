@@ -4,6 +4,7 @@ class AdminController < ApplicationController
   before_action :setup
   before_action :set_api_keys
   before_action :verify_admin
+  before_action :set_locale
 
   private
 
@@ -34,6 +35,12 @@ class AdminController < ApplicationController
     else
       @api_keys = current_user.keys
       @api_keys_array = @api_keys.collect {|k| k.api_key }.compact
+    end
+  end
+
+  def set_locale
+    if current_user.present?
+      I18n.locale = current_user.locale.to_sym if current_user.locale.present?
     end
   end
 
