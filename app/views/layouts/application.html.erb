@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PagekitMarkdefrozeCom</title>
+    <title>Pagekit by Mark de Froze</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.28/css/uikit.min.css' %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.28/js/uikit.min.js' %>
-    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.28/js/uikit-icons.min.js' %>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.31/css/uikit.min.css' %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.31/js/uikit.min.js' %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.31/js/uikit-icons.min.js' %>
 
   </head>
   <body>
     <div id="navbar">
       <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
-        <nav class="uk-navbar-container uk-container" uk-navbar>
+        <nav class="uk-navbar-container uk-container uk-container-expand" uk-navbar>
           <div class="uk-navbar-left">
             <a class="uk-logo" href="#">Pagekit by Mark de Froze</a>
           </div>
@@ -23,7 +20,7 @@
             <ul class="uk-navbar-nav">
               <li class="uk-active"><a href="/">Home</a></li>
               <li><a href="/blog">Blog</a></li>
-              <li><a href="#">About</a></li>
+              <li><a href="/">About</a></li>
             </ul>
             <a href="<%=new_user_session_path%>" class="uk-button uk-button-primary">Sign In</a>
           </div>
@@ -31,7 +28,7 @@
       </div>
     </div>
     <div id="main" uk-height-viewport="expand: true">
-      <div class="uk-container uk-margin-large-top">
+      <div class="uk-container uk-container-expand uk-margin-large-top">
         <%= yield %>
       </div>
     </div>
