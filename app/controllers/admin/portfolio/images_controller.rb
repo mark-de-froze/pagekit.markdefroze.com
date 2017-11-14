@@ -18,6 +18,7 @@ class Admin::Portfolio::ImagesController < AdminController
     @search = params[:search].to_s.html_safe
 
     @portfolio_images = Portfolio::Image.unscoped
+                            .api(@api_keys_array)
                             .search(:title, @search)
                             .order(updated_at: :desc)
                             .page(params[:page])
